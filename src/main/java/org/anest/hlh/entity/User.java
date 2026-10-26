@@ -78,19 +78,21 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
     @Builder
-    private User(Long id, String username, String password, String email, String fullName,
-                 Boolean enabled, Boolean accountNonExpired, Boolean accountNonLocked,
-                 Boolean credentialsNonExpired, LocalDateTime createdAt, LocalDateTime updatedAt,
-                 UserDetail userDetail, Set<Role> roles) {
+    private User(
+            Long id, String username, String password, String email, String fullName,
+            Boolean enabled, Boolean accountNonExpired, Boolean accountNonLocked,
+            Boolean credentialsNonExpired, LocalDateTime createdAt, LocalDateTime updatedAt,
+            UserDetail userDetail, Set<Role> roles
+    ) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.fullName = fullName;
-        this.enabled = enabled != null ? enabled : true;
-        this.accountNonExpired = accountNonExpired != null ? accountNonExpired : true;
-        this.accountNonLocked = accountNonLocked != null ? accountNonLocked : true;
-        this.credentialsNonExpired = credentialsNonExpired != null ? credentialsNonExpired : true;
+        this.enabled = enabled == null || enabled;
+        this.accountNonExpired = accountNonExpired == null || accountNonExpired;
+        this.accountNonLocked = accountNonLocked == null || accountNonLocked;
+        this.credentialsNonExpired = credentialsNonExpired == null || credentialsNonExpired;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.setUserDetail(userDetail);
