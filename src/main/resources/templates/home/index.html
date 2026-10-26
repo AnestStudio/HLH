@@ -5,9 +5,7 @@
       layout:decorate="~{layouts/main}">
 <head>
   <title>Tìm Trọ Cực Chất Quanh Trường</title>
-  <th:block layout:fragment="page-styles">
-    <link rel="stylesheet" th:href="@{/css/index.css}">
-  </th:block>
+  <link rel="stylesheet" th:href="@{/css/index.css}">
 </head>
 <body>
 <div layout:fragment="content">
@@ -519,13 +517,12 @@
     </div>
   </div>
 </section>
-
-<!-- Footer Fragment -->
-<div th:replace="~{fragments/footer :: footer}"></div>
+</div>
 
 <!-- ==========================================================================
-     MODAL: XEM CHI TIẾT PHÒNG NHANH (BENTO & RADAR PREVIEW)
+     MODALS FOR INDEX PAGE
      ========================================================================== -->
+<th:block layout:fragment="modal">
 <div class="modal fade" id="roomPreviewModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content fa-card overflow-hidden border-thick shadow-neo-lg rounded-4">
@@ -561,9 +558,6 @@
   </div>
 </div>
 
-<!-- ==========================================================================
-     MODAL 1: ROOM QUICK-PEEK 360° DETAIL MODAL
-     ========================================================================== -->
 <div class="modal fade" id="roomQuickPeekModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content fa-card overflow-hidden border-thick shadow-neo-lg rounded-4">
@@ -579,10 +573,9 @@
   </div>
 </div>
 
-
-<!-- Toast Notification Container -->
+<!-- Toast Notification Container for index.js -->
 <div class="fa-toast-container" id="toastContainer"></div>
-</div>
+</th:block>
 
 <th:block layout:fragment="page-scripts">
   <script th:src="@{/js/index.js}"></script>
