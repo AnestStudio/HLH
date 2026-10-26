@@ -50,6 +50,19 @@ class LoginAttemptServiceTest {
     }
 
     @Test
+    @DisplayName("Should report when a failed attempt starts or continues a lock")
+    void shouldReportLockStatusFromFailedAttempt() {
+        String username = "testuser";
+
+        for (int i = 1; i < LoginAttemptService.MAX_ATTEMPTS; i++) {
+            assertThat(loginAttemptService.loginFailed(username)).isFalse();
+        }
+
+        assertThat(loginAttemptService.loginFailed(username)).isTrue();
+        assertThat(loginAttemptService.loginFailed(username)).isTrue();
+    }
+
+    @Test
     @DisplayName("Should block user after 5 failed attempts")
     void shouldBlockUserAfterReachingMaxAttempts() {
         String username = "testuser";
@@ -134,6 +147,30 @@ class LoginAttemptServiceTest {
 
         assertThat(loginAttemptService.isBlocked(username)).isFalse();
         assertThat(loginAttemptService.getFailedAttempts(username)).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("Expired attempts should be evicted from the cache")
+    void shouldEvictExpiredAttempts() {
+        loginAttemptService.loginFailed("expired-user");
+        assertThat(loginAttemptService.estimatedTrackedUsernames()).isEqualTo(1);
+
+        clock.advance(Duration.ofMinutes(LoginAttemptService.LOCK_DURATION_MINUTES));
+        loginAttemptService.cleanUpExpiredAttempts();
+
+        assertThat(loginAttemptService.estimatedTrackedUsernames()).isZero();
+    }
+
+    @Test
+    @DisplayName("Cache size should remain bounded after many unique usernames")
+    void shouldBoundCacheSizeAfterUsernameFlood() {
+        for (int i = 0; i < LoginAttemptService.MAX_TRACKED_USERNAMES + 1_000; i++) {
+            loginAttemptService.loginFailed("random-user-" + i);
+        }
+        loginAttemptService.cleanUpExpiredAttempts();
+
+        assertThat(loginAttemptService.estimatedTrackedUsernames())
+            .isLessThanOrEqualTo(LoginAttemptService.MAX_TRACKED_USERNAMES);
     }
 
     private static final class MutableClock extends Clock {

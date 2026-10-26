@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS role;
 
 create table role (
     id        bigint auto_increment primary key,
-    role_name varchar(20) CHARACTER SET utf8mb4 null
+    role_name varchar(20) CHARACTER SET utf8mb4 not null unique
 );
 
 create table user (
@@ -18,8 +18,8 @@ create table user (
     account_non_expired     tinyint(1) default 1 not null,
     account_non_locked      tinyint(1) default 1 not null,
     credentials_non_expired tinyint(1) default 1 not null,
-    created_at              timestamp default CURRENT_TIMESTAMP not null,
-    updated_at              timestamp default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP
+    created_at              datetime default CURRENT_TIMESTAMP not null,
+    updated_at              datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP
 );
 
 create table user_detail (
@@ -33,10 +33,9 @@ create table user_detail (
 );
 
 create table user_role (
-    id      bigint auto_increment primary key,
-    user_id bigint null,
-    role_id bigint null,
+    user_id bigint not null,
+    role_id bigint not null,
+    primary key (user_id, role_id),
     foreign key (user_id) references user(id),
-    foreign key (role_id) references role(id),
-    unique (user_id, role_id)
+    foreign key (role_id) references role(id)
 );

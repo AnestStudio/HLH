@@ -14,8 +14,6 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class User {
 
     @Id
@@ -35,19 +33,15 @@ public class User {
     private String fullName;
 
     @Column(nullable = false)
-    @Builder.Default
     private Boolean enabled = true;
 
     @Column(name = "account_non_expired", nullable = false)
-    @Builder.Default
     private Boolean accountNonExpired = true;
 
     @Column(name = "account_non_locked", nullable = false)
-    @Builder.Default
     private Boolean accountNonLocked = true;
 
     @Column(name = "credentials_non_expired", nullable = false)
-    @Builder.Default
     private Boolean credentialsNonExpired = true;
 
     @Column(name = "created_at", nullable = false)
@@ -81,6 +75,25 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    @Builder.Default
     private Set<Role> roles = new HashSet<>();
+
+    @Builder
+    private User(Long id, String username, String password, String email, String fullName,
+                 Boolean enabled, Boolean accountNonExpired, Boolean accountNonLocked,
+                 Boolean credentialsNonExpired, LocalDateTime createdAt, LocalDateTime updatedAt,
+                 UserDetail userDetail, Set<Role> roles) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.fullName = fullName;
+        this.enabled = enabled != null ? enabled : true;
+        this.accountNonExpired = accountNonExpired != null ? accountNonExpired : true;
+        this.accountNonLocked = accountNonLocked != null ? accountNonLocked : true;
+        this.credentialsNonExpired = credentialsNonExpired != null ? credentialsNonExpired : true;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.setUserDetail(userDetail);
+        this.roles = roles != null ? roles : new HashSet<>();
+    }
 }

@@ -60,11 +60,11 @@ public class WebSecurityConfig {
     public AuthenticationFailureHandler authenticationFailureHandler() {
         return (request, response, exception) -> {
             String username = request.getParameter("username");
-            boolean alreadyLocked = exception instanceof LockedException || loginAttemptService.isBlocked(username);
-            if (!alreadyLocked) {
-                loginAttemptService.loginFailed(username);
+            boolean locked = exception instanceof LockedException;
+            if (!locked) {
+                locked = loginAttemptService.loginFailed(username);
             }
-            if (alreadyLocked || loginAttemptService.isBlocked(username)) {
+            if (locked) {
                 response.sendRedirect(request.getContextPath() + "/login?locked=true");
             } else {
                 response.sendRedirect(request.getContextPath() + "/login?error=true");

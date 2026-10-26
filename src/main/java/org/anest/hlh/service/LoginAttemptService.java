@@ -1,18 +1,21 @@
 package org.anest.hlh.service;
 
+import com.github.benmanes.caffeine.cache.Cache;
+import com.github.benmanes.caffeine.cache.Caffeine;
+import com.github.benmanes.caffeine.cache.Expiry;
 import org.springframework.stereotype.Service;
 
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class LoginAttemptService {
 
     public static final int MAX_ATTEMPTS = 5;
     public static final long LOCK_DURATION_MINUTES = 15;
+    public static final long MAX_TRACKED_USERNAMES = 10_000;
 
     private static final Duration LOCK_DURATION = Duration.ofMinutes(LOCK_DURATION_MINUTES);
 
@@ -31,11 +34,11 @@ public class LoginAttemptService {
             if (lockedUntil != null) {
                 return !now.isBefore(lockedUntil);
             }
-            return lastAttempt.plus(LOCK_DURATION).isBefore(now);
+            return !now.isBefore(lastAttempt.plus(LOCK_DURATION));
         }
     }
 
-    private final Map<String, Attempt> attemptsCache = new ConcurrentHashMap<>();
+    private final Cache<String, Attempt> attemptsCache;
     private final Clock clock;
 
     public LoginAttemptService() {
@@ -44,13 +47,33 @@ public class LoginAttemptService {
 
     LoginAttemptService(Clock clock) {
         this.clock = clock;
+        this.attemptsCache = Caffeine.newBuilder()
+            .maximumSize(MAX_TRACKED_USERNAMES)
+            .ticker(() -> TimeUnit.MILLISECONDS.toNanos(clock.millis()))
+            .expireAfter(new Expiry<String, Attempt>() {
+                @Override
+                public long expireAfterCreate(String key, Attempt attempt, long currentTime) {
+                    return remainingNanos(attempt);
+                }
+
+                @Override
+                public long expireAfterUpdate(String key, Attempt attempt, long currentTime, long currentDuration) {
+                    return remainingNanos(attempt);
+                }
+
+                @Override
+                public long expireAfterRead(String key, Attempt attempt, long currentTime, long currentDuration) {
+                    return remainingNanos(attempt);
+                }
+            })
+            .build();
     }
 
-    public void loginFailed(String username) {
+    public boolean loginFailed(String username) {
         if (username == null || username.isBlank()) {
-            return;
+            return false;
         }
-        attemptsCache.compute(normalize(username), (k, attempt) -> {
+        Attempt updatedAttempt = attemptsCache.asMap().compute(normalize(username), (k, attempt) -> {
             Instant now = clock.instant();
             if (attempt == null || attempt.isExpired(now)) {
                 return newAttempt(1, now);
@@ -61,13 +84,14 @@ public class LoginAttemptService {
             }
             return newAttempt(attempt.count() + 1, now);
         });
+        return updatedAttempt.isLocked(clock.instant());
     }
 
     public void loginSucceeded(String username) {
         if (username == null || username.isBlank()) {
             return;
         }
-        attemptsCache.remove(normalize(username));
+        attemptsCache.invalidate(normalize(username));
     }
 
     public boolean isBlocked(String username) {
@@ -75,13 +99,13 @@ public class LoginAttemptService {
             return false;
         }
         String key = normalize(username);
-        Attempt attempt = attemptsCache.get(key);
+        Attempt attempt = attemptsCache.getIfPresent(key);
         if (attempt == null) {
             return false;
         }
         Instant now = clock.instant();
         if (attempt.isExpired(now)) {
-            attemptsCache.remove(key, attempt);
+            attemptsCache.asMap().remove(key, attempt);
             return false;
         }
         return attempt.isLocked(now);
@@ -91,7 +115,7 @@ public class LoginAttemptService {
         if (username == null || username.isBlank()) {
             return 0;
         }
-        Attempt attempt = attemptsCache.get(normalize(username));
+        Attempt attempt = attemptsCache.getIfPresent(normalize(username));
         if (attempt == null || attempt.isExpired(clock.instant())) {
             return 0;
         }
@@ -102,7 +126,7 @@ public class LoginAttemptService {
         if (username == null || username.isBlank()) {
             return 0;
         }
-        Attempt attempt = attemptsCache.get(normalize(username));
+        Attempt attempt = attemptsCache.getIfPresent(normalize(username));
         Instant now = clock.instant();
         if (attempt == null || !attempt.isLocked(now)) {
             return 0;
@@ -118,5 +142,20 @@ public class LoginAttemptService {
 
     private static String normalize(String username) {
         return username.trim().toLowerCase();
+    }
+
+    private long remainingNanos(Attempt attempt) {
+        Instant expiresAt = attempt.lockedUntil() != null
+            ? attempt.lockedUntil()
+            : attempt.lastAttempt().plus(LOCK_DURATION);
+        return Math.max(0, Duration.between(clock.instant(), expiresAt).toNanos());
+    }
+
+    void cleanUpExpiredAttempts() {
+        attemptsCache.cleanUp();
+    }
+
+    long estimatedTrackedUsernames() {
+        return attemptsCache.estimatedSize();
     }
 }
