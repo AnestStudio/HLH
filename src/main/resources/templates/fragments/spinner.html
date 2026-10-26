@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Spinner Fragment</title>
+</head>
+<body>
+  <!-- Global Loading Spinner Overlay -->
+  <div th:fragment="spinner" id="global-spinner" class="spinner-overlay d-none">
+    <div class="spinner-border text-dark" role="status" style="width: 3.5rem; height: 3.5rem; border-width: 0.35rem;">
+      <span class="visually-hidden">Đang tải...</span>
+    </div>
+  </div>
+</body>
+</html>

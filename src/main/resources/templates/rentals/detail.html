@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+<head>
+  <title>Chi Tiết Phòng Trọ</title>
+</head>
+<body>
+<main layout:fragment="content" class="container py-4">
+  <!-- Back Button & Title -->
+  <div class="mb-3">
+    <a th:href="@{/rentals/list}" class="text-decoration-none text-dark fw-bold small">
+      <i class="fa-solid fa-arrow-left me-1"></i> Quay lại danh sách phòng
+    </a>
+  </div>
+
+  <div class="row g-4">
+    <!-- Left Column: Gallery & Details -->
+    <div class="col-lg-8">
+      <div class="p-3 bg-white border border-3 border-dark rounded-4 shadow-sm mb-4">
+        <h1 class="h3 fw-bold mb-2">Phòng khép kín đầy đủ đồ, có ban công thoáng Cầu Giấy</h1>
+        <p class="text-muted small mb-3">
+          <i class="fa-solid fa-location-dot me-1 text-danger"></i>Ngõ 165 Cầu Giấy, Dịch Vọng, Cầu Giấy, Hà Nội
+        </p>
+
+        <!-- Room Image Gallery Mock -->
+        <div class="bg-light border border-2 border-dark rounded-3 overflow-hidden mb-3" style="height: 360px;">
+          <img th:src="@{/img/default-room-lg.jpg}" class="w-100 h-100 object-fit-cover" alt="Ảnh phòng trọ" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23ffeaa7%22%3E%3C%2Frect%3E%3Ctext%20x%3D%22300%22%20y%3D%22200%22%20fill%3D%22%232d3436%22%20font-size%3D%2224%22%20font-weight%3D%22bold%22%3EAlbum%20%E1%BA%A2nh%20Ph%C3%B2ng%20Tr%E1%BB%8D%3C%2Ftext%3E%3C%2Fsvg%3E'">
+        </div>
+
+        <!-- Specifications -->
+        <div class="row g-2 text-center p-3 bg-light border border-2 border-dark rounded-3 mb-4">
+          <div class="col-4 border-end border-2 border-dark">
+            <span class="text-muted small d-block">Giá thuê</span>
+            <strong class="text-danger fs-5">3.2 Tr/tháng</strong>
+          </div>
+          <div class="col-4 border-end border-2 border-dark">
+            <span class="text-muted small d-block">Diện tích</span>
+            <strong class="fs-5">25 m²</strong>
+          </div>
+          <div class="col-4">
+            <span class="text-muted small d-block">Tiền cọc</span>
+            <strong class="fs-5">1 Tháng</strong>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <h4 class="h5 fw-bold mb-2">Thông tin mô tả</h4>
+        <p class="text-secondary leading-relaxed">
+          Phòng trọ mới xây, trang bị sẵn điều hòa Inverter, nóng lạnh, giường tủ gỗ sồi, kệ bếp riêng biệt. Giờ giấc tự do 100%, khóa vân tay hiện đại, camera an ninh 24/7. Điện 3.5k/số, nước 30k/khối, mạng 100k/phòng.
+        </p>
+
+        <!-- Facilities -->
+        <h4 class="h5 fw-bold mt-4 mb-3">Tiện ích phòng</h4>
+        <div class="d-flex flex-wrap gap-2 mb-4">
+          <span class="badge bg-light text-dark border border-dark p-2"><i class="fa-solid fa-snowflake me-1 text-primary"></i>Điều hòa</span>
+          <span class="badge bg-light text-dark border border-dark p-2"><i class="fa-solid fa-shower me-1 text-info"></i>Nóng lạnh</span>
+          <span class="badge bg-light text-dark border border-dark p-2"><i class="fa-solid fa-wifi me-1 text-success"></i>Wifi tốc độ cao</span>
+          <span class="badge bg-light text-dark border border-dark p-2"><i class="fa-solid fa-door-closed me-1"></i>Vệ sinh khép kín</span>
+          <span class="badge bg-light text-dark border border-dark p-2"><i class="fa-solid fa-shield-halved me-1 text-warning"></i>Khóa vân tay</span>
+        </div>
+
+        <!-- Reviews Section -->
+        <div class="pt-4 border-top border-2 border-dark">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="h5 fw-bold mb-0">Đánh giá từ khách thuê (3)</h4>
+            <button type="button" class="btn btn-outline-dark btn-sm fw-bold" data-bs-toggle="modal" data-bs-target="#writeReviewModal">
+              <i class="fa-solid fa-pen-nib me-1"></i> Viết đánh giá
+            </button>
+          </div>
+          <div class="p-3 border border-2 border-dark rounded-3 bg-light mb-2">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="fw-bold">Nguyễn Văn Tuấn</span>
+              <span class="text-warning small"><i class="fa-solid fa-star"></i> 5.0</span>
+            </div>
+            <p class="text-muted small mb-0">Chủ nhà rất thân thiện và hỗ trợ nhiệt tình. Phòng sạch đẹp y như hình chụp.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Host Info & Contact Box -->
+    <div class="col-lg-4">
+      <div class="p-4 bg-white border border-3 border-dark rounded-4 shadow-sm position-sticky" style="top: 20px;">
+        <div class="text-center pb-3 border-bottom border-2 border-dark mb-3">
+          <div class="user-avatar-circle bg-warning text-dark mx-auto mb-2" style="width: 60px; height: 60px; font-size: 1.5rem;">
+            A
+          </div>
+          <h5 class="fw-bold mb-0">Cô Lan (Chủ nhà)</h5>
+          <span class="badge bg-success border border-dark mt-1">Đã xác minh danh tính</span>
+        </div>
+
+        <div class="d-grid gap-2 mb-3">
+          <a href="tel:0988888888" class="fa-btn fa-btn-yellow justify-content-center py-2">
+            <i class="fa-solid fa-phone-volume"></i> 0988 888 888
+          </a>
+          <a th:href="@{/messages/conversation(id=1)}" class="btn btn-outline-dark fw-bold py-2 border-2">
+            <i class="fa-solid fa-comments me-1"></i> Nhắn tin trao đổi
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Modal viết đánh giá -->
+<th:block layout:fragment="modal">
+  <div class="modal fade" id="writeReviewModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border border-3 border-dark rounded-4 shadow">
+        <div class="modal-header border-bottom border-2 border-dark">
+          <h5 class="modal-title fw-bold">Viết đánh giá phòng trọ</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label fw-bold small">Đánh giá sao</label>
+            <div class="text-warning fs-4">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-bold small">Nội dung nhận xét</label>
+            <textarea class="form-control border-dark" rows="4" placeholder="Chia sẻ trải nghiệm thực tế về phòng trọ, chủ nhà, an ninh..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer border-top border-2 border-dark">
+          <button type="button" class="btn btn-outline-dark fw-bold" data-bs-dismiss="modal">Hủy</button>
+          <button type="button" class="fa-btn fa-btn-yellow">Gửi đánh giá</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</th:block>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Pagination Fragment</title>
+</head>
+<body>
+  <!-- Standard Neo-Brutalism Pagination Fragment -->
+  <nav th:fragment="pagination" aria-label="Page navigation" class="d-flex justify-content-center my-4">
+    <ul class="pagination gap-2 mb-0">
+      <li class="page-item disabled">
+        <a class="page-link border border-2 border-dark rounded-3 text-dark fw-bold px-3 py-2" href="#" tabindex="-1" aria-disabled="true">
+          <i class="fa-solid fa-chevron-left me-1"></i> Trước
+        </a>
+      </li>
+      <li class="page-item active" aria-current="page">
+        <a class="page-link border border-2 border-dark rounded-3 bg-warning text-dark fw-bold px-3 py-2 shadow-sm" href="#">1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link border border-2 border-dark rounded-3 text-dark fw-bold px-3 py-2" href="#">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link border border-2 border-dark rounded-3 text-dark fw-bold px-3 py-2" href="#">3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link border border-2 border-dark rounded-3 text-dark fw-bold px-3 py-2" href="#">
+          Sau <i class="fa-solid fa-chevron-right ms-1"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</body>
+</html>

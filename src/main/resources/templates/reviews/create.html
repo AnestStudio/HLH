@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+<head>
+  <title>Viết Đánh Giá</title>
+</head>
+<body>
+<main layout:fragment="content" class="container py-4">
+  <div class="mx-auto" style="max-width: 600px;">
+    <div class="p-4 p-md-5 bg-white border border-3 border-dark rounded-4 shadow-sm">
+      <h1 class="h4 fw-bold mb-1">Viết Đánh Giá Nhà Trọ</h1>
+      <p class="text-muted small mb-4">Chia sẻ trải nghiệm ở thực tế của bạn để giúp đỡ các bạn sinh viên khác</p>
+
+      <form th:action="@{/reviews/create}" method="post">
+        <div class="mb-3">
+          <label class="form-label fw-bold small">Chọn phòng trọ đã thuê</label>
+          <select name="rentalId" class="form-select border-dark" required>
+            <option value="1">Phòng khép kín ban công thoáng Cầu Giấy (Ngõ 165 Cầu Giấy)</option>
+            <option value="2">Mini Studio Trần Thái Tông (Ngõ 45 Trần Thái Tông)</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold small">Đánh giá chung</label>
+          <select name="rating" class="form-select border-dark" required>
+            <option value="5">⭐⭐⭐⭐⭐ Tuyệt vời (5/5)</option>
+            <option value="4">⭐⭐⭐⭐ Tốt (4/5)</option>
+            <option value="3">⭐⭐⭐ Bình thường (3/5)</option>
+            <option value="2">⭐⭐ Kém (2/5)</option>
+            <option value="1">⭐ Rất tệ (1/5)</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold small">Nhận xét chi tiết</label>
+          <textarea name="comment" class="form-control border-dark" rows="5" placeholder="Đánh giá về giá cả, an ninh, chủ nhà, điện nước..." required></textarea>
+        </div>
+        <button type="submit" class="fa-btn fa-btn-yellow w-100 justify-content-center py-2 mt-2">
+          <i class="fa-solid fa-paper-plane"></i> Gửi đánh giá
+        </button>
+      </form>
+    </div>
+  </div>
+</main>
+</body>
+</html>

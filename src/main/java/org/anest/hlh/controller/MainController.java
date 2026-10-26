@@ -8,17 +8,17 @@ public class MainController {
 
     @GetMapping
     public String index() {
-        return "index";
+        return "home/index";
     }
 
     @GetMapping("/login")
     public String login() {
-        return "login";
+        return "auth/login";
     }
 
     @GetMapping("/home")
     public String home() {
-        return "home";
+        return "home/home";
     }
 }
 

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- Fragment nạp các thẻ meta và CSS nền tảng dùng chung toàn hệ thống -->
+  <th:block th:fragment="common_head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSRF Meta Tags for AJAX / Fetch APIs -->
+    <meta name="_csrf" th:content="${_csrf?.token}"/>
+    <meta name="_csrf_parameter" th:content="${_csrf?.parameterName}"/>
+    <meta name="_csrf_header" th:content="${_csrf?.headerName}"/>
+
+    <!-- Bootstrap 5.3.3 CSS (Vendor) -->
+    <link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+    <!-- FontAwesome 6 Free (Vendor) -->
+    <link rel="stylesheet" th:href="@{/vendor/fontawesome/css/all.min.css}">
+    <!-- Modular Design System CSS (Fonts, Tokens, Layout, Components) -->
+    <link rel="stylesheet" th:href="@{/css/common/base.css}">
+  </th:block>
+</head>
+<body></body>
+</html>

@@ -12,11 +12,11 @@ public class AdminController {
 
     @GetMapping
     public String admin() {  // /admin
-        return "admin";
+        return "admin/dashboard";
     }
 
     @GetMapping("/user")
     public String userManagement() { // /admin/user
-        return "user-management";
+        return "users/list";
     }
 }

@@ -1,0 +1,10 @@
+/* ==========================================================================
+   TROAWESOME — CORE DESIGN SYSTEM BASE STYLESHEET
+   Nạp tập trung các thiết lập tokens, màu sắc, layout và component dùng chung
+   ========================================================================== */
+
+@import url('fonts.css');
+@import url('variables.css');
+@import url('color.css');
+@import url('layout.css');
+@import url('components.css');

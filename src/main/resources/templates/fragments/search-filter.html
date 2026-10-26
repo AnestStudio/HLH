@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Filter Fragment</title>
+</head>
+<body>
+  <!-- Search Filter Fragment -->
+  <div th:fragment="search_filter" class="search-filter-card p-3 p-md-4 bg-white border border-3 border-dark rounded-4 shadow-sm mb-4">
+    <form th:action="@{/rentals}" method="get" class="row g-3 align-items-end">
+      <!-- Search Input Keyword -->
+      <div class="col-md-4">
+        <label class="form-label fw-bold small text-muted mb-1">
+          <i class="fa-solid fa-magnifying-glass me-1 text-dark"></i>Từ khóa / Tên trường ĐH
+        </label>
+        <input type="text" name="keyword" class="form-control border-2 border-dark" placeholder="ĐH Bách Khoa, Cầu Giấy,..." th:value="${param.keyword}">
+      </div>
+
+      <!-- District Select -->
+      <div class="col-md-3">
+        <label class="form-label fw-bold small text-muted mb-1">
+          <i class="fa-solid fa-location-dot me-1 text-danger"></i>Khu vực / Quận
+        </label>
+        <select name="district" class="form-select border-2 border-dark">
+          <option value="">Tất cả khu vực</option>
+          <option value="cau-giay">Quận Cầu Giấy</option>
+          <option value="dong-da">Quận Đống Đa</option>
+          <option value="hai-ba-trung">Quận Hai Bà Trưng</option>
+          <option value="thanh-xuan">Quận Thanh Xuân</option>
+          <option value="nam-tu-liem">Quận Nam Từ Liêm</option>
+        </select>
+      </div>
+
+      <!-- Price Range Select -->
+      <div class="col-md-3">
+        <label class="form-label fw-bold small text-muted mb-1">
+          <i class="fa-solid fa-tags me-1 text-success"></i>Khoảng giá
+        </label>
+        <select name="priceRange" class="form-select border-2 border-dark">
+          <option value="">Tất cả mức giá</option>
+          <option value="under-2m">Dưới 2 triệu</option>
+          <option value="2m-3m5">2 - 3.5 triệu</option>
+          <option value="3m5-5m">3.5 - 5 triệu</option>
+          <option value="over-5m">Trên 5 triệu</option>
+        </select>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="col-md-2">
+        <button type="submit" class="fa-btn fa-btn-yellow w-100 justify-content-center py-2">
+          <i class="fa-solid fa-filter"></i> Tìm kiếm
+        </button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

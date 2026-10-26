@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+<head>
+    <title>Trang Chủ</title>
+    <th:block layout:fragment="page-styles">
+        <link rel="stylesheet" th:href="@{/css/home.css}">
+    </th:block>
+</head>
+<body>
+<main layout:fragment="content" class="container py-5">
+    <div class="home-welcome-card">
+        <div>
+            <div class="home-welcome-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+        </div>
+        <h1 class="home-welcome-title">Đăng nhập thành công!</h1>
+        <p class="home-welcome-desc">
+            Chào mừng bạn đã trở lại hệ thống tìm kiếm phòng trọ sinh viên TrọAwesome.
+        </p>
+        <div class="home-actions-group">
+            <a th:href="@{/}" class="fa-btn fa-btn-yellow text-decoration-none">
+                <i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm phòng trọ ngay
+            </a>
+            <a th:href="@{/admin}" class="fa-btn fa-btn-navy text-decoration-none" sec:authorize="hasRole('ADMIN')">
+                <i class="fa-solid fa-shield-halved"></i> Quản trị hệ thống
+            </a>
+        </div>
+    </div>
+</main>
+</body>
+</html>

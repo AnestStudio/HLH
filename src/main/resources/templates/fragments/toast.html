@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Toast Fragment</title>
+</head>
+<body>
+  <!-- Global Toast Notification Container -->
+  <div th:fragment="toast" class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1090;">
+    <!-- Success Toast -->
+    <div th:if="${successMessage != null}"
+         class="toast align-items-center text-bg-success border-0 show shadow"
+         role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body fw-medium">
+          <i class="fa-solid fa-circle-check me-2"></i>
+          <span th:text="${successMessage}">Thao tác thành công!</span>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Đóng"></button>
+      </div>
+    </div>
+
+    <!-- Error Toast -->
+    <div th:if="${errorMessage != null}"
+         class="toast align-items-center text-bg-danger border-0 show shadow"
+         role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body fw-medium">
+          <i class="fa-solid fa-circle-exclamation me-2"></i>
+          <span th:text="${errorMessage}">Đã có lỗi xảy ra!</span>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Đóng"></button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

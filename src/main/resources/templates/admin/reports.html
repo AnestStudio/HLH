@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/admin}">
+<head>
+  <title>Báo Cáo Vi Phạm</title>
+</head>
+<body>
+<main layout:fragment="content" class="container py-5">
+  <div class="admin-panel">
+    <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom border-2 border-dark">
+      <div>
+        <h2 class="h4 fw-bold mb-0">Xử Lý Báo Cáo Vi Phạm</h2>
+        <p class="text-muted small mb-0">Kiểm duyệt các phản ánh từ người dùng về tin ảo, lừa đảo đặt cọc</p>
+      </div>
+      <span class="badge bg-danger fs-6 border border-dark">3 Chờ xử lý</span>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle admin-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Loại báo cáo</th>
+            <th>Đối tượng bị báo cáo</th>
+            <th>Người gửi</th>
+            <th>Lý do</th>
+            <th class="text-center">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>#102</td>
+            <td><span class="badge bg-danger">Tin đăng ảo</span></td>
+            <td><strong>Phòng trọ giá 1tr Cầu Giấy</strong></td>
+            <td>sinhvien2003</td>
+            <td>Số điện thoại gọi đòi cọc trước khi xem phòng, nghi ngờ lừa đảo.</td>
+            <td class="text-center">
+              <button class="btn btn-sm btn-outline-success me-1"><i class="fa-solid fa-check"></i> Xử lý</button>
+              <button class="btn btn-sm btn-outline-dark"><i class="fa-solid fa-trash"></i> Ẩn tin</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+</body>
+</html>

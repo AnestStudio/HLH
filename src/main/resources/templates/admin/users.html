@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/admin}">
+<head>
+  <title>Quản Trị Người Dùng</title>
+</head>
+<body>
+<main layout:fragment="content" class="container py-5">
+  <div class="admin-panel">
+    <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom border-2 border-dark">
+      <div>
+        <h2 class="h4 fw-bold mb-0">Quản Trị Tài Khoản</h2>
+        <p class="text-muted small mb-0">Quản lý phân quyền người thuê, chủ trọ và quản trị viên</p>
+      </div>
+      <a th:href="@{/admin/user/form}" class="btn btn-dark fw-bold btn-sm">
+        <i class="fa-solid fa-plus me-1"></i> Thêm tài khoản
+      </a>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle admin-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tên đăng nhập</th>
+            <th>Họ và tên</th>
+            <th>Email</th>
+            <th>Vai trò</th>
+            <th>Trạng thái</th>
+            <th class="text-center" style="width: 140px;">Hành động</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><strong>anhdt</strong></td>
+            <td>Đinh Tuấn Anh</td>
+            <td>anhdt@gmail.com</td>
+            <td><span class="badge bg-primary">ADMIN</span></td>
+            <td><span class="badge bg-success">Hoạt động</span></td>
+            <td class="text-center">
+              <a th:href="@{/users/detail(id=1)}" class="btn btn-sm btn-outline-dark me-1" title="Xem chi tiết"><i class="fa-solid fa-eye"></i></a>
+              <a th:href="@{/users/form(id=1)}" class="btn btn-sm btn-outline-dark" title="Sửa"><i class="fa-solid fa-pen"></i></a>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>lan_host</strong></td>
+            <td>Nguyễn Thị Lan</td>
+            <td>lanhost@gmail.com</td>
+            <td><span class="badge bg-warning text-dark">CHỦ TRỌ</span></td>
+            <td><span class="badge bg-success">Hoạt động</span></td>
+            <td class="text-center">
+              <a th:href="@{/users/detail(id=2)}" class="btn btn-sm btn-outline-dark me-1" title="Xem chi tiết"><i class="fa-solid fa-eye"></i></a>
+              <a th:href="@{/users/form(id=2)}" class="btn btn-sm btn-outline-dark" title="Sửa"><i class="fa-solid fa-pen"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+</body>
+</html>

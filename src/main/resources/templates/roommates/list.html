@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+<head>
+  <title>Tìm Bạn Ở Ghép</title>
+</head>
+<body>
+<main layout:fragment="content" class="container py-4">
+  <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+    <div>
+      <h1 class="h3 fw-bold mb-1">Tìm Người Ở Ghép Cùng Gu</h1>
+      <p class="text-muted small mb-0">Kết nối bạn cùng phòng văn minh, sạch sẽ, chia sẻ chi phí sinh hoạt</p>
+    </div>
+    <a th:href="@{/roommates/create}" class="fa-btn fa-btn-yellow">
+      <i class="fa-solid fa-plus"></i> Đăng tin tìm bạn
+    </a>
+  </div>
+
+  <!-- Roommate Grid -->
+  <div class="row g-4">
+    <div class="col-md-6 col-lg-4">
+      <div class="p-4 bg-white border border-3 border-dark rounded-4 shadow-sm fa-card fa-card-interactive h-100 d-flex flex-column">
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <div class="user-avatar-circle bg-info text-dark" style="width: 50px; height: 50px;">H</div>
+          <div>
+            <h5 class="fw-bold mb-0">Hoàng Nam (2004)</h5>
+            <span class="text-muted small"><i class="fa-solid fa-graduation-cap me-1"></i>ĐH Bách Khoa</span>
+          </div>
+        </div>
+        <div class="mb-2">
+          <span class="badge bg-warning text-dark border border-dark me-1">1.5 Tr/tháng/người</span>
+          <span class="badge bg-light text-dark border border-dark">Quận Hai Bà Trưng</span>
+        </div>
+        <p class="text-secondary small leading-relaxed mb-3">
+          Mình đang ở phòng 25m2 full đồ gần Bách Khoa, muốn tìm 1 bạn nam không hút thuốc, giữ gìn vệ sinh chung...
+        </p>
+        <div class="d-flex flex-wrap gap-1 mb-3">
+          <span class="badge bg-light text-dark border">Không hút thuốc</span>
+          <span class="badge bg-light text-dark border">Ngủ sớm</span>
+          <span class="badge bg-light text-dark border">Thích yên tĩnh</span>
+        </div>
+        <div class="mt-auto pt-3 border-top border-2 border-dark d-flex justify-content-between align-items-center">
+          <span class="text-muted small">Cần 1 bạn nam</span>
+          <a th:href="@{/roommates/detail(id=1)}" class="btn btn-sm btn-outline-dark fw-bold">Xem hồ sơ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div th:replace="~{fragments/pagination :: pagination}"></div>
+</main>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+<head>
+  <title>Phòng Trọ Của Tôi</title>
+</head>
+<body>
+<main layout:fragment="content" class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h1 class="h3 fw-bold mb-1">Danh Sách Phòng Đang Đăng</h1>
+      <p class="text-muted small mb-0">Quản lý trạng thái còn phòng / đã thuê</p>
+    </div>
+    <a th:href="@{/owner/create-rental}" class="fa-btn fa-btn-yellow">
+      <i class="fa-solid fa-plus"></i> Đăng phòng mới
+    </a>
+  </div>
+
+  <div class="table-responsive bg-white border border-3 border-dark rounded-4 shadow-sm p-3">
+    <table class="table table-hover align-middle mb-0">
+      <thead>
+        <tr>
+          <th>Tên phòng</th>
+          <th>Khu vực</th>
+          <th>Giá thuê</th>
+          <th>Trạng thái</th>
+          <th class="text-center" style="width: 140px;">Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <strong>Phòng khép kín ban công Cầu Giấy</strong>
+          </td>
+          <td>Cầu Giấy, Hà Nội</td>
+          <td class="text-danger fw-bold">3.2 Tr/tháng</td>
+          <td><span class="badge bg-success">Còn phòng</span></td>
+          <td class="text-center">
+            <a th:href="@{/owner/edit-rental(id=1)}" class="btn btn-sm btn-outline-dark me-1"><i class="fa-solid fa-pen"></i></a>
+            <button type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+</body>
+</html>

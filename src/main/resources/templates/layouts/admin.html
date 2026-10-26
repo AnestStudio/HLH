@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title layout:title-pattern="$CONTENT_TITLE — $LAYOUT_TITLE">TrọAwesome Admin</title>
+
+  <!-- Common Head (Meta, CSRF, Bootstrap, FontAwesome, Base CSS) -->
+  <th:block th:replace="~{fragments/head :: common_head}"></th:block>
+  <!-- Admin Global CSS -->
+  <link rel="stylesheet" th:href="@{/css/admin.css}">
+
+  <!-- Page Specific Styles Slot -->
+  <th:block layout:fragment="page-styles"></th:block>
+</head>
+<body id="page-top" class="bg-light d-flex flex-column min-vh-100">
+  <!-- Admin Navigation Bar -->
+  <div th:replace="~{fragments/sidebar :: admin_navbar}"></div>
+
+  <!-- Admin Main Content Slot -->
+  <main layout:fragment="content" class="container py-5 flex-grow-1"></main>
+
+  <!-- Global Loading Spinner Overlay -->
+  <div th:replace="~{fragments/spinner :: spinner}"></div>
+
+  <!-- Global Toast Notifications -->
+  <div th:replace="~{fragments/toast :: toast}"></div>
+
+  <!-- Scroll to Top Button -->
+  <a class="btn-scroll-to-top" href="#page-top" title="Cuộn lên đầu trang">
+    <i class="fa-solid fa-arrow-up"></i>
+  </a>
+
+  <!-- Page Specific Modals Slot (Placed at body root to avoid z-index & overflow bugs) -->
+  <th:block layout:fragment="modal"></th:block>
+
+  <!-- Common Scripts (Bootstrap Bundle) -->
+  <th:block th:replace="~{fragments/scripts :: common_scripts}"></th:block>
+
+  <!-- Page Specific Scripts Slot -->
+  <th:block layout:fragment="page-scripts"></th:block>
+</body>
+</html>

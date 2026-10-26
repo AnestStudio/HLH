@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+<head>
+  <title>Đăng Tin Phòng Trọ</title>
+</head>
+<body>
+<main layout:fragment="content" class="container py-4">
+  <div class="mx-auto" style="max-width: 760px;">
+    <div class="p-4 p-md-5 bg-white border border-3 border-dark rounded-4 shadow-sm">
+      <h1 class="h4 fw-bold mb-1">Đăng Tin Cho Thuê Phòng Trọ</h1>
+      <p class="text-muted small mb-4">Điền đầy đủ thông tin để tin đăng được tiếp cận nhanh nhất đến sinh viên</p>
+
+      <form th:action="@{/owner/create-rental}" method="post">
+        <div class="mb-3">
+          <label class="form-label fw-bold small">Tiêu đề tin đăng</label>
+          <input type="text" name="title" class="form-control border-dark" placeholder="VD: Phòng khép kín đầy đủ đồ, có ban công thoáng Cầu Giấy" required>
+        </div>
+        <div class="row g-3 mb-3">
+          <div class="col-md-6">
+            <label class="form-label fw-bold small">Giá thuê (VNĐ/tháng)</label>
+            <input type="number" name="price" class="form-control border-dark" placeholder="VD: 3200000" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-bold small">Diện tích (m²)</label>
+            <input type="number" name="area" class="form-control border-dark" placeholder="VD: 25" required>
+          </div>
+        </div>
+        <div class="row g-3 mb-3">
+          <div class="col-md-6">
+            <label class="form-label fw-bold small">Khu vực / Quận</label>
+            <select name="district" class="form-select border-dark" required>
+              <option value="cau-giay">Quận Cầu Giấy</option>
+              <option value="dong-da">Quận Đống Đa</option>
+              <option value="hai-ba-trung">Quận Hai Bà Trưng</option>
+              <option value="thanh-xuan">Quận Thanh Xuân</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-bold small">Địa chỉ chi tiết</label>
+            <input type="text" name="address" class="form-control border-dark" placeholder="VD: Số 18, Ngõ 165 Cầu Giấy" required>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold small">Mô tả phòng</label>
+          <textarea name="description" class="form-control border-dark" rows="4" placeholder="Mô tả nội thất, giờ giấc, tiền điện nước, tiện ích xung quanh..."></textarea>
+        </div>
+        <button type="submit" class="fa-btn fa-btn-yellow w-100 justify-content-center py-2 mt-2">
+          <i class="fa-solid fa-paper-plane"></i> Gửi duyệt tin đăng
+        </button>
+      </form>
+    </div>
+  </div>
+</main>
+</body>
+</html>

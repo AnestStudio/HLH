@@ -1,0 +1,38 @@
+/* ==========================================================================
+   DESIGN TOKENS & CSS VARIABLES
+   ========================================================================== */
+:root {
+  /* Typography */
+  --font-heading: 'Baloo 2', 'Be Vietnam Pro', sans-serif;
+  --font-body: 'Plus Jakarta Sans', 'Be Vietnam Pro', sans-serif;
+
+  /* Color Palette (Neo-Brutalism) */
+  --fa-navy: #183153;
+  --fa-navy-light: #2b4c7e;
+  --fa-cream: #FFFDF7;
+  --fa-bg-alt: #F0F4F8;
+  --fa-yellow: #FFD43B;
+  --fa-yellow-hover: #fcc419;
+  --fa-blue: #74C0FC;
+  --fa-mint: #63E6BE;
+  --fa-purple: #B197FC;
+  --fa-coral: #FFA8A8;
+  --fa-orange: #FF922B;
+  --fa-white: #FFFFFF;
+
+  /* Borders */
+  --border-thick: 3px solid var(--fa-navy);
+  --border-medium: 2.5px solid var(--fa-navy);
+
+  /* Drop Shadows (Neo-Brutalism Hard Shadows) */
+  --shadow-sm: 0 3px 0 var(--fa-navy);
+  --shadow-md: 0 5px 0 var(--fa-navy);
+  --shadow-lg: 0 8px 0 var(--fa-navy);
+  --shadow-offset: 5px 5px 0 var(--fa-navy);
+
+  /* Border Radii */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+}

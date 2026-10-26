@@ -1,132 +1,13 @@
 /* ==========================================================================
- 1. DESIGN TOKENS (FONTAWESOME NEO-BRUTALISM PALETTE)
- ========================================================================== */
-:root {
-  --font-heading: 'Baloo 2', 'Be Vietnam Pro', sans-serif;
-  --font-body: 'Plus Jakarta Sans', 'Be Vietnam Pro', sans-serif;
-  --fa-navy: #183153;
-  --fa-navy-light: #2b4c7e;
-  --fa-cream: #FFFDF7;
-  --fa-bg-alt: #F0F4F8;
-  --fa-yellow: #FFD43B;
-  --fa-yellow-hover: #fcc419;
-  --fa-blue: #74C0FC;
-  --fa-mint: #63E6BE;
-  --fa-purple: #B197FC;
-  --fa-coral: #FFA8A8;
-  --fa-orange: #FF922B;
-  --fa-white: #FFFFFF;
-
-  --border-thick: 3px solid var(--fa-navy);
-  --border-medium: 2.5px solid var(--fa-navy);
-  --shadow-sm: 0 3px 0 var(--fa-navy);
-  --shadow-md: 0 5px 0 var(--fa-navy);
-  --shadow-lg: 0 8px 0 var(--fa-navy);
-  --shadow-offset: 5px 5px 0 var(--fa-navy);
-
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-pill: 999px;
-}
-
-body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  background-color: var(--fa-cream);
-  color: var(--fa-navy);
-  background-image: radial-gradient(#18315318 1.5px, transparent 1.5px);
-  background-size: 28px 28px;
-  overflow-x: hidden;
-}
-
-h1, h2, h3, h4, h5, h6, .font-heading, .heading-font {
-  font-family: var(--font-heading);
-  font-weight: 600;
-  color: var(--fa-navy);
-  letter-spacing: -0.01em;
-}
+   TROAWESOME — CSS RIÊNG BIỆT CỦA TRANG INDEX
+   Bao gồm: Bộ lọc tìm trọ, Bento Grid Showcase, Radar Quét Trọ, Polaroid Ở Ghép
+   ========================================================================== */
 
 /* ==========================================================================
-   2. TACTILE NEO-BRUTALIST UTILITIES & BOOTSTRAP OVERRIDES
+   1. BỘ LỌC TÌM TRỌ THÔNG MINH (COMMAND CENTER FILTER)
    ========================================================================== */
-.fa-card {
-  background: var(--fa-white);
-  border: var(--border-thick);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
 
-.fa-card-interactive:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-
-.fa-btn {
-  font-weight: 800;
-  border: var(--border-medium);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  color: var(--fa-navy);
-  padding: 0.6rem 1.25rem;
-  transition: all 0.12s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-  cursor: pointer;
-  user-select: none;
-}
-
-.fa-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-  color: var(--fa-navy);
-}
-
-.fa-btn:active, .fa-btn.active-pressed {
-  transform: translateY(2px);
-  box-shadow: 0 1px 0 var(--fa-navy);
-}
-
-.fa-btn-yellow {
-  background-color: var(--fa-yellow);
-}
-
-.fa-btn-yellow:hover {
-  background-color: var(--fa-yellow-hover);
-}
-
-.fa-btn-mint {
-  background-color: var(--fa-mint);
-}
-
-.fa-btn-blue {
-  background-color: var(--fa-blue);
-}
-
-.fa-btn-purple {
-  background-color: var(--fa-purple);
-}
-
-.fa-btn-coral {
-  background-color: var(--fa-coral);
-}
-
-.fa-btn-white {
-  background-color: var(--fa-white);
-}
-
-.fa-btn-navy {
-  background-color: var(--fa-navy);
-  color: var(--fa-white);
-}
-
-.fa-btn-navy:hover {
-  color: var(--fa-yellow);
-}
-
-/* Tactile Filter Pills */
+/* Tactile Filter Pills (Giá & Diện tích) */
 .filter-pill {
   border: var(--border-medium);
   border-radius: var(--radius-pill);
@@ -151,6 +32,7 @@ h1, h2, h3, h4, h5, h6, .font-heading, .heading-font {
   box-shadow: 0 1px 0 var(--fa-navy);
 }
 
+/* Nút bật/tắt tiện ích bắt buộc */
 .amenity-toggle {
   border: var(--border-medium);
   border-radius: var(--radius-md);
@@ -173,28 +55,7 @@ h1, h2, h3, h4, h5, h6, .font-heading, .heading-font {
   box-shadow: 0 1px 0 var(--fa-navy);
 }
 
-/* Floating Stickers & Badges */
-.fa-badge {
-  border: 2px solid var(--fa-navy);
-  border-radius: var(--radius-pill);
-  padding: 0.3rem 0.8rem;
-  font-weight: 800;
-  font-size: 0.78rem;
-  box-shadow: 2px 2px 0 var(--fa-navy);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.sticker-rotate-left {
-  transform: rotate(-3deg);
-}
-
-.sticker-rotate-right {
-  transform: rotate(3deg);
-}
-
-/* Custom Range Slider */
+/* Thanh trượt khoảng cách tùy chỉnh */
 .fa-range {
   -webkit-appearance: none;
   width: 100%;
@@ -222,25 +83,8 @@ h1, h2, h3, h4, h5, h6, .font-heading, .heading-font {
   transform: scale(1.15);
 }
 
-/* Custom Select */
-.fa-select {
-  border: var(--border-medium);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  font-weight: 700;
-  color: var(--fa-navy);
-  padding: 0.65rem 1rem;
-  background-color: var(--fa-white);
-  cursor: pointer;
-}
-
-.fa-select:focus {
-  border-color: var(--fa-navy);
-  box-shadow: 0 0 0 3px var(--fa-yellow), var(--shadow-sm);
-}
-
 /* ==========================================================================
-   3. BENTO GRID SHOWCASE
+   2. BENTO MAGAZINE GRID SHOWCASE
    ========================================================================== */
 .bento-grid {
   display: grid;
@@ -268,7 +112,13 @@ h1, h2, h3, h4, h5, h6, .font-heading, .heading-font {
   box-shadow: 8px 10px 0 var(--fa-navy);
 }
 
-/* Grid Spans (Dynamic & Static Column Spans) */
+/* Bento Background Tints */
+.bg-bento-yellow { background-color: #FFF9DB !important; }
+.bg-bento-purple { background-color: #F3F0FF !important; }
+.bg-bento-mint { background-color: #E6FCF5 !important; }
+.bg-bento-pink { background-color: #FFF0F6 !important; }
+
+/* Grid Spans */
 .bento-hero {
   grid-column: span 7;
   grid-row: span 2;
@@ -289,25 +139,11 @@ h1, h2, h3, h4, h5, h6, .font-heading, .heading-font {
   grid-row: span 1;
 }
 
-.bento-col-8 {
-  grid-column: span 8;
-}
-
-.bento-col-4 {
-  grid-column: span 4;
-}
-
-.bento-col-6 {
-  grid-column: span 6;
-}
-
-.bento-full {
-  grid-column: span 12;
-}
-
-.bento-row-2 {
-  grid-row: span 2;
-}
+.bento-col-8 { grid-column: span 8; }
+.bento-col-4 { grid-column: span 4; }
+.bento-col-6 { grid-column: span 6; }
+.bento-full  { grid-column: span 12; }
+.bento-row-2 { grid-row: span 2; }
 
 @media (max-width: 991px) {
   .bento-hero, .bento-tall, .bento-wide, .bento-medium,
@@ -317,6 +153,7 @@ h1, h2, h3, h4, h5, h6, .font-heading, .heading-font {
   }
 }
 
+/* Bento Image Wrapper */
 .room-img-wrapper {
   position: relative;
   height: 230px;
@@ -342,32 +179,7 @@ h1, h2, h3, h4, h5, h6, .font-heading, .heading-font {
   transform: scale(1.05);
 }
 
-.fa-sticker {
-  position: absolute;
-  z-index: 3;
-  font-weight: 800;
-  font-size: 0.8rem;
-  padding: 0.35rem 0.85rem;
-  border: var(--border-medium);
-  border-radius: var(--radius-pill);
-  box-shadow: var(--shadow-sm);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.sticker-top-left {
-  top: 14px;
-  left: 14px;
-  transform: rotate(-3deg);
-}
-
-.sticker-top-right {
-  top: 14px;
-  right: 14px;
-  transform: rotate(3deg);
-}
-
+/* Thẻ giá & khoảng cách phòng */
 .price-tag-brutal {
   background: var(--fa-yellow);
   border: var(--border-medium);
@@ -393,17 +205,8 @@ h1, h2, h3, h4, h5, h6, .font-heading, .heading-font {
   gap: 0.35rem;
 }
 
-/* Polaroid Card Specific */
-.polaroid-frame {
-  background: var(--fa-white);
-  padding: 1rem 1rem 1.25rem 1rem;
-  border: var(--border-thick);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-}
-
 /* ==========================================================================
-   4. INTERACTIVE RADAR MAP
+   3. RADAR QUÉT TRỌ TƯƠNG TÁC QUANH TRƯỜNG
    ========================================================================== */
 .radar-container {
   background: var(--fa-navy);
@@ -436,20 +239,9 @@ h1, h2, h3, h4, h5, h6, .font-heading, .heading-font {
   pointer-events: none;
 }
 
-.ring-1 {
-  width: 150px;
-  height: 150px;
-}
-
-.ring-2 {
-  width: 280px;
-  height: 280px;
-}
-
-.ring-3 {
-  width: 400px;
-  height: 400px;
-}
+.ring-1 { width: 150px; height: 150px; }
+.ring-2 { width: 280px; height: 280px; }
+.ring-3 { width: 400px; height: 400px; }
 
 @media (max-width: 576px) {
   .radar-circle-wrap, .radar-arena {
@@ -479,12 +271,8 @@ h1, h2, h3, h4, h5, h6, .font-heading, .heading-font {
 }
 
 @keyframes sweep {
-  from {
-    transform: rotate(0deg) scale(2);
-  }
-  to {
-    transform: rotate(360deg) scale(2);
-  }
+  from { transform: rotate(0deg) scale(2); }
+  to { transform: rotate(360deg) scale(2); }
 }
 
 .radar-center-uni, .campus-center-hub {
@@ -553,7 +341,24 @@ h1, h2, h3, h4, h5, h6, .font-heading, .heading-font {
   }
 }
 
-/* Toast Notification */
+/* ==========================================================================
+   4. POLAROID GHÉP TRỌ (ROOMMATE SHOWCASE)
+   ========================================================================== */
+.polaroid-frame {
+  background: var(--fa-white);
+  padding: 1rem 1rem 1.25rem 1rem;
+  border: var(--border-thick);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.bg-roommate-gradient {
+  background: linear-gradient(135deg, #FFF3BF 0%, #FFD43B 100%) !important;
+}
+
+/* ==========================================================================
+   5. TOAST NOTIFICATIONS
+   ========================================================================== */
 .fa-toast-container {
   position: fixed;
   bottom: 24px;

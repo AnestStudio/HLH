@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/auth}">
+<head>
+  <title>Đăng nhập</title>
+</head>
+<body>
+<main layout:fragment="content" class="w-100" style="max-width: 420px;">
+  <div class="p-4 p-md-5 bg-white border border-3 border-dark rounded-4 shadow">
+    <div class="text-center mb-4">
+      <h2 class="h4 fw-bold mb-1">Đăng nhập tài khoản</h2>
+      <p class="text-muted small">Chào mừng bạn trở lại với TrọAwesome</p>
+    </div>
+
+    <div th:if="${param.error}" class="alert alert-danger py-2 small" role="alert">
+      Tên đăng nhập hoặc mật khẩu không chính xác!
+    </div>
+    <div th:if="${param.locked}" class="alert alert-warning py-2 small" role="alert">
+      Tài khoản tạm thời bị khóa do nhập sai mật khẩu quá 5 lần.
+    </div>
+    <div th:if="${param.logout}" class="alert alert-success py-2 small" role="alert">
+      Bạn đã đăng xuất thành công!
+    </div>
+
+    <form th:action="@{/login}" method="post">
+      <div class="mb-3">
+        <label class="form-label fw-bold small">Tên đăng nhập</label>
+        <input type="text" name="username" class="form-control border-dark" placeholder="Username" required autofocus>
+      </div>
+      <div class="mb-3">
+        <div class="d-flex justify-content-between">
+          <label class="form-label fw-bold small">Mật khẩu</label>
+          <a th:href="@{/forgot-password}" class="text-muted small text-decoration-none">Quên mật khẩu?</a>
+        </div>
+        <input type="password" name="password" class="form-control border-dark" placeholder="••••••••" required>
+      </div>
+      <div class="form-check text-start mb-3">
+        <input class="form-check-input" type="checkbox" name="remember-me" id="rememberMe">
+        <label class="form-check-label small" for="rememberMe">Ghi nhớ đăng nhập</label>
+      </div>
+      <button type="submit" class="fa-btn fa-btn-yellow w-100 justify-content-center py-2">
+        <i class="fa-solid fa-right-to-bracket"></i> Đăng nhập
+      </button>
+      <div class="text-center mt-3 small">
+        Chưa có tài khoản? <a th:href="@{/register}" class="fw-bold text-dark text-decoration-underline">Đăng ký ngay</a>
+      </div>
+    </form>
+  </div>
+</main>
+</body>
+</html>

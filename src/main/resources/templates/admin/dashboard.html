@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/admin}">
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+<main layout:fragment="content" class="container py-5">
+    <div class="admin-panel">
+        <div class="admin-header">
+            <div class="admin-header-icon">
+                <i class="fa-solid fa-gear"></i>
+            </div>
+            <div>
+                <h1 class="admin-header-title">Bảng điều khiển Quản trị viên</h1>
+                <p class="admin-header-desc">Quản lý người dùng, duyệt tin đăng và kiểm soát dữ liệu phòng trọ.</p>
+            </div>
+        </div>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="admin-stat-card admin-stat-card--mint">
+                    <div class="admin-stat-label"><i class="fa-solid fa-users me-1"></i> Người dùng</div>
+                    <h3 class="admin-stat-value">1,420+</h3>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="admin-stat-card admin-stat-card--yellow">
+                    <div class="admin-stat-label"><i class="fa-solid fa-hotel me-1"></i> Phòng đã duyệt</div>
+                    <h3 class="admin-stat-value">385</h3>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="admin-stat-card admin-stat-card--coral">
+                    <div class="admin-stat-label"><i class="fa-solid fa-clock me-1"></i> Chờ duyệt</div>
+                    <h3 class="admin-stat-value">14</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

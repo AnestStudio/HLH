@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+<nav th:fragment="navbar" class="navbar navbar-expand-lg sticky-top py-3 navbar-fa">
+  <div class="container">
+    <!-- Brand Logo -->
+    <a class="navbar-brand d-flex align-items-center gap-2" th:href="@{/}">
+      <div class="brand-logo-box d-flex align-items-center justify-content-center">
+        <i class="fa-solid fa-house-chimney-window fs-4 text-fa-navy"></i>
+      </div>
+      <div>
+        <span class="font-heading fs-3 fw-bold d-block lh-1 text-fa-navy">TrọAwesome</span>
+        <span class="badge rounded-pill bg-fa-purple text-fa-navy border border-dark border-1 font-monospace"
+              style="font-size: 0.65rem;">FONT-AWESOME EDITION</span>
+      </div>
+    </a>
+
+    <!-- Mobile Burger -->
+    <button class="navbar-toggler fa-btn fa-btn-white py-2 px-3" type="button" data-bs-toggle="collapse"
+            data-bs-target="#mainNav">
+      <i class="fa-solid fa-bars fs-5"></i>
+    </button>
+
+    <!-- Nav Links -->
+    <div class="collapse navbar-collapse mt-3 mt-lg-0" id="mainNav">
+      <ul class="navbar-nav mx-auto gap-2">
+        <li class="nav-item">
+          <a class="nav-link fw-bold px-3 rounded-3 text-fa-navy" th:href="@{/#bentoSection}">
+            <i class="fa-solid fa-wand-magic-sparkles me-1 text-warning"></i> Bento Trọ Chất
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold px-3 rounded-3 text-fa-navy" th:href="@{/#radarSection}">
+            <i class="fa-solid fa-satellite-dish me-1 text-info"></i> Radar Quanh Trường
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold px-3 rounded-3 text-fa-navy" th:href="@{/#roommateSection}">
+            <i class="fa-solid fa-user-group me-1 text-success"></i> Tìm Bạn Ở Ghép
+          </a>
+        </li>
+      </ul>
+
+      <!-- Right Action Buttons -->
+      <div class="d-flex flex-wrap align-items-center gap-2 mt-2 mt-lg-0">
+        <button class="fa-btn fa-btn-white position-relative" onclick="if (typeof showSavedToast === 'function') showSavedToast()">
+          <i class="fa-solid fa-heart text-danger"></i>
+          <span>Đã lưu</span>
+          <span id="savedCountBadge"
+                class="badge rounded-pill bg-warning text-dark border border-2 border-dark">3</span>
+        </button>
+
+        <button class="fa-btn fa-btn-yellow" onclick="if (typeof showPostModal === 'function') showPostModal()">
+          <i class="fa-solid fa-plus-circle"></i>
+          <span>Đăng Tin Trọ</span>
+        </button>
+
+        <span sec:authorize="isAuthenticated()" class="d-flex align-items-center gap-2">
+          <a th:href="@{/home}" class="fa-btn fa-btn-white text-decoration-none">
+            <i class="fa-solid fa-user"></i>
+            <span sec:authentication="name">Tài khoản</span>
+          </a>
+          <form th:action="@{/logout}" method="post" class="d-inline m-0">
+            <button type="submit" class="btn btn-outline-danger btn-sm fw-bold">
+              <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+          </form>
+        </span>
+        <a sec:authorize="isAnonymous()" class="fa-btn fa-btn-white text-decoration-none" th:href="@{/login}">
+          <i class="fa-solid fa-right-to-bracket"></i>
+          <span>Đăng nhập</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+</body>
+</html>

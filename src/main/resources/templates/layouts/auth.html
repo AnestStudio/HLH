@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title layout:title-pattern="$CONTENT_TITLE — $LAYOUT_TITLE">TrọAwesome</title>
+
+  <!-- Common Head (Meta, CSRF, Bootstrap, FontAwesome, Base CSS) -->
+  <th:block th:replace="~{fragments/head :: common_head}"></th:block>
+
+  <!-- Page Specific Styles Slot -->
+  <th:block layout:fragment="page-styles"></th:block>
+</head>
+<body id="page-top" class="bg-light d-flex flex-column min-vh-100">
+  <!-- Minimal Brand Header -->
+  <header class="py-3 border-bottom border-2 border-dark bg-white">
+    <div class="container text-center">
+      <a th:href="@{/}" class="text-decoration-none d-inline-flex align-items-center gap-2">
+        <span class="px-3 py-1 border border-2 border-dark rounded-3 fw-bold text-dark fs-5 bg-warning">
+          <i class="fa-solid fa-house-chimney me-1"></i>TrọAwesome
+        </span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Auth Form Slot -->
+  <main layout:fragment="content" class="flex-grow-1 d-flex align-items-center justify-content-center py-5 px-3"></main>
+
+  <!-- Global Loading Spinner Overlay -->
+  <div th:replace="~{fragments/spinner :: spinner}"></div>
+
+  <!-- Global Toast Notifications -->
+  <div th:replace="~{fragments/toast :: toast}"></div>
+
+  <!-- Modals Slot -->
+  <th:block layout:fragment="modal"></th:block>
+
+  <!-- Common Scripts -->
+  <th:block th:replace="~{fragments/scripts :: common_scripts}"></th:block>
+
+  <!-- Page Specific Scripts Slot -->
+  <th:block layout:fragment="page-scripts"></th:block>
+</body>
+</html>

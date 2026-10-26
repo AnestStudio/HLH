@@ -1,0 +1,54 @@
+/* ==========================================================================
+   GLOBAL LAYOUT & BASE STYLES (DÙNG CHUNG)
+   ========================================================================== */
+
+/* Base & Typography */
+body {
+  font-family: var(--font-body);
+  background-color: var(--fa-cream);
+  color: var(--fa-navy);
+  background-image: radial-gradient(#18315318 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading, .heading-font {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--fa-navy);
+  letter-spacing: -0.01em;
+}
+
+/* Borders & Shadows Utilities */
+.border-thick { border: var(--border-thick) !important; }
+.border-medium { border: var(--border-medium) !important; }
+.border-end-thick { border-right: var(--border-thick) !important; }
+.shadow-neo-sm { box-shadow: var(--shadow-sm) !important; }
+.shadow-neo-md { box-shadow: var(--shadow-md) !important; }
+.shadow-neo-lg { box-shadow: var(--shadow-lg) !important; }
+.shadow-neo-offset { box-shadow: var(--shadow-offset) !important; }
+
+/* Sticky Navbar Layout */
+.navbar-fa {
+  background-color: rgba(255, 253, 247, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: var(--border-thick);
+}
+
+.brand-logo-box {
+  width: 46px;
+  height: 46px;
+  background-color: var(--fa-yellow);
+  border: var(--border-thick);
+  border-radius: 14px;
+  box-shadow: 0 4px 0 var(--fa-navy);
+}
+
+.traffic-dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #000;
+}

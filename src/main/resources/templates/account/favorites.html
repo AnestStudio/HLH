@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+<head>
+  <title>Tin Phòng Trọ Đã Lưu</title>
+</head>
+<body>
+<main layout:fragment="content" class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h1 class="h3 fw-bold mb-1">Danh Sách Phòng Trọ Đã Lưu</h1>
+      <p class="text-muted small mb-0">Các phòng trọ bạn đã đánh dấu quan tâm</p>
+    </div>
+    <a th:href="@{/account/profile}" class="btn btn-outline-dark btn-sm fw-bold">← Về hồ sơ</a>
+  </div>
+
+  <div class="row g-4">
+    <!-- Reusable Rental Card Frag -->
+    <th:block th:replace="~{fragments/rental-card :: rental_card}"></th:block>
+    <th:block th:replace="~{fragments/rental-card :: rental_card}"></th:block>
+  </div>
+</main>
+</body>
+</html>

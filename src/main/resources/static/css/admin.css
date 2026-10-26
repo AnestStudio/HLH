@@ -1,0 +1,137 @@
+/* ==========================================================================
+   TROAWESOME — CSS RIÊNG BIỆT CHO TRANG ADMIN & QUẢN TRỊ VIÊN
+   ========================================================================== */
+
+/* Admin Main Panel Container */
+.admin-panel {
+  background: var(--fa-white);
+  border: var(--border-heavy);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-hard);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Admin Header Section */
+.admin-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: var(--border-medium);
+}
+
+.admin-header-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-md);
+  background: var(--fa-yellow);
+  border: var(--border-medium);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  color: var(--fa-navy);
+  flex-shrink: 0;
+}
+
+.admin-header-title {
+  font-family: var(--font-heading);
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--fa-navy);
+  margin-bottom: 0.25rem;
+}
+
+.admin-header-desc {
+  color: var(--fa-slate);
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+
+/* Admin Stat Cards */
+.admin-stat-card {
+  border: var(--border-heavy);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 1.25rem 1.5rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hard);
+}
+
+.admin-stat-card--mint {
+  background: var(--fa-mint);
+}
+
+.admin-stat-card--yellow {
+  background: var(--fa-yellow);
+}
+
+.admin-stat-card--coral {
+  background: var(--fa-coral);
+  color: var(--fa-white);
+}
+
+.admin-stat-card--coral .text-dark {
+  color: var(--fa-white) !important;
+}
+
+.admin-stat-label {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-stat-value {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 0;
+}
+
+/* Admin Table Customization */
+.admin-table {
+  border: var(--border-medium) !important;
+  margin-bottom: 0;
+}
+
+.admin-table thead th {
+  background-color: var(--fa-navy) !important;
+  color: var(--fa-white) !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  letter-spacing: 0.5px;
+  padding: 0.85rem 1rem;
+  border-bottom: var(--border-heavy);
+}
+
+.admin-table tbody td {
+  padding: 0.85rem 1rem;
+  vertical-align: middle;
+  border-color: #dee2e6;
+}
+
+/* Admin Badge */
+.admin-badge-role {
+  background: var(--fa-yellow);
+  color: var(--fa-navy);
+  border: var(--border-medium);
+  box-shadow: 2px 2px 0 var(--fa-navy);
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+}

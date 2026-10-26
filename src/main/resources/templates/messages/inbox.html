@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+<head>
+  <title>Tin Nhắn</title>
+</head>
+<body>
+<main layout:fragment="content" class="container py-4">
+  <div class="mb-4">
+    <h1 class="h3 fw-bold mb-1">Hộp Thư Liên Hệ</h1>
+    <p class="text-muted small mb-0">Trao đổi trực tiếp giữa người thuê, chủ nhà và bạn cùng phòng</p>
+  </div>
+
+  <div class="bg-white border border-3 border-dark rounded-4 shadow-sm overflow-hidden">
+    <div class="list-group list-group-flush">
+      <a th:href="@{/messages/conversation(id=1)}" class="list-group-item list-group-item-action p-3 d-flex align-items-center gap-3 border-bottom border-dark">
+        <div class="user-avatar-circle bg-warning text-dark" style="width: 48px; height: 48px;">L</div>
+        <div class="flex-grow-1">
+          <div class="d-flex justify-content-between align-items-center">
+            <h6 class="fw-bold mb-0">Cô Lan (Chủ nhà 165 Cầu Giấy)</h6>
+            <span class="text-muted small">10:30 Hôm nay</span>
+          </div>
+          <p class="text-muted small mb-0 text-truncate" style="max-width: 500px;">
+            Chiều mai khoảng 15h cháu qua xem phòng nhé, phòng đang trống sẵn rồi...
+          </p>
+        </div>
+      </a>
+      <a th:href="@{/messages/conversation(id=2)}" class="list-group-item list-group-item-action p-3 d-flex align-items-center gap-3">
+        <div class="user-avatar-circle bg-info text-dark" style="width: 48px; height: 48px;">H</div>
+        <div class="flex-grow-1">
+          <div class="d-flex justify-content-between align-items-center">
+            <h6 class="fw-bold mb-0">Hoàng Nam (Tìm ở ghép Bách Khoa)</h6>
+            <span class="text-muted small">Hôm qua</span>
+          </div>
+          <p class="text-muted small mb-0 text-truncate" style="max-width: 500px;">
+            Chào bạn, mình thấy tin tìm bạn cùng phòng của bạn...
+          </p>
+        </div>
+      </a>
+    </div>
+  </div>
+</main>
+</body>
+</html>

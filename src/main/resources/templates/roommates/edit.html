@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+<head>
+  <title>Chỉnh Sửa Tin Ở Ghép</title>
+</head>
+<body>
+<main layout:fragment="content" class="container py-4">
+  <div class="mx-auto" style="max-width: 680px;">
+    <div class="p-4 p-md-5 bg-white border border-3 border-dark rounded-4 shadow-sm">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h4 fw-bold mb-0">Chỉnh Sửa Tin Tìm Người Ở Ghép</h1>
+        <a th:href="@{/account/profile}" class="btn btn-outline-dark btn-sm fw-bold">Hủy</a>
+      </div>
+
+      <form th:action="@{/roommates/edit}" method="post">
+        <div class="mb-3">
+          <label class="form-label fw-bold small">Tiêu đề tin đăng</label>
+          <input type="text" name="title" class="form-control border-dark" value="Tìm 1 bạn nam ở ghép phòng khép kín Bách Khoa" required>
+        </div>
+        <div class="row g-3 mb-3">
+          <div class="col-md-6">
+            <label class="form-label fw-bold small">Ngân sách chia sẻ (VNĐ)</label>
+            <input type="number" name="budget" class="form-control border-dark" value="1500000" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-bold small">Khu vực / Quận</label>
+            <select name="district" class="form-select border-dark" required>
+              <option value="hai-ba-trung" selected>Quận Hai Bà Trưng</option>
+              <option value="cau-giay">Quận Cầu Giấy</option>
+              <option value="dong-da">Quận Đống Đa</option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold small">Thói quen sinh hoạt & Tiêu chí</label>
+          <textarea name="habits" class="form-control border-dark" rows="4">Không hút thuốc, giữ trật tự sau 23h, dọn phòng luân phiên hàng tuần.</textarea>
+        </div>
+        <button type="submit" class="fa-btn fa-btn-yellow w-100 justify-content-center py-2 mt-3">
+          <i class="fa-solid fa-floppy-disk"></i> Cập nhật tin đăng
+        </button>
+      </form>
+    </div>
+  </div>
+</main>
+</body>
+</html>

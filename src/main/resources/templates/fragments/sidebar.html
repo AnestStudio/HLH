@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<body>
+<nav th:fragment="admin_navbar" class="navbar navbar-expand-lg bg-dark navbar-dark border-bottom border-3 border-dark py-3">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-white" th:href="@{/admin}">
+      <i class="fa-solid fa-shield-halved text-warning fs-3"></i>
+      <span>TrọAwesome Admin</span>
+    </a>
+    <div class="d-flex align-items-center gap-3">
+      <a th:href="@{/admin}" class="btn btn-outline-light btn-sm fw-bold">
+        <i class="fa-solid fa-gauge me-1"></i> Dashboard
+      </a>
+      <a th:href="@{/admin/user}" class="btn btn-outline-light btn-sm fw-bold">
+        <i class="fa-solid fa-users me-1"></i> Tài khoản
+      </a>
+      <a th:href="@{/home}" class="btn btn-outline-warning btn-sm fw-bold">
+        <i class="fa-solid fa-house me-1"></i> User Home
+      </a>
+      <form th:action="@{/logout}" method="post" class="d-inline m-0">
+        <button type="submit" class="btn btn-danger btn-sm fw-bold">
+          <i class="fa-solid fa-right-from-bracket me-1"></i> Đăng xuất
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<aside th:fragment="admin_sidebar" class="admin-sidebar p-3 bg-white border border-3 border-dark rounded-4 mb-4">
+  <div class="d-flex flex-column gap-2">
+    <a th:href="@{/admin}" class="btn btn-light border border-dark text-start fw-bold">
+      <i class="fa-solid fa-gauge me-2 text-primary"></i> Tổng quan Dashboard
+    </a>
+    <a th:href="@{/admin/user}" class="btn btn-light border border-dark text-start fw-bold">
+      <i class="fa-solid fa-users me-2 text-success"></i> Quản lý Người dùng
+    </a>
+    <a th:href="@{/}" class="btn btn-light border border-dark text-start fw-bold">
+      <i class="fa-solid fa-arrow-left me-2 text-secondary"></i> Quay về Trang chủ
+    </a>
+  </div>
+</aside>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+<head>
+  <title>Trò Chuyện</title>
+</head>
+<body>
+<main layout:fragment="content" class="container py-4">
+  <div class="mx-auto" style="max-width: 800px;">
+    <!-- Chat Card -->
+    <div class="bg-white border border-3 border-dark rounded-4 shadow-sm overflow-hidden d-flex flex-column" style="height: 600px;">
+      <!-- Chat Header -->
+      <div class="p-3 border-bottom border-2 border-dark d-flex justify-content-between align-items-center bg-light">
+        <div class="d-flex align-items-center gap-2">
+          <a th:href="@{/messages/inbox}" class="btn btn-sm btn-outline-dark me-1"><i class="fa-solid fa-arrow-left"></i></a>
+          <div class="user-avatar-circle bg-warning text-dark" style="width: 40px; height: 40px;">L</div>
+          <div>
+            <h6 class="fw-bold mb-0">Cô Lan (Chủ nhà 165 Cầu Giấy)</h6>
+            <span class="text-success small"><i class="fa-solid fa-circle me-1" style="font-size: 8px;"></i>Đang trực tuyến</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Messages Body -->
+      <div class="flex-grow-1 p-3 overflow-y-auto d-flex flex-column gap-3" style="background-color: #fafafa;">
+        <div class="align-self-start p-3 bg-white border border-2 border-dark rounded-3 shadow-sm" style="max-width: 75%;">
+          <p class="mb-1 small">Chào cháu, phòng ở ngõ 165 Cầu Giấy vẫn còn nhé.</p>
+          <span class="text-muted" style="font-size: 11px;">10:28</span>
+        </div>
+        <div class="align-self-end p-3 bg-warning border border-2 border-dark rounded-3 shadow-sm" style="max-width: 75%;">
+          <p class="mb-1 small">Dạ cho cháu hỏi chiều mai cháu có thể qua xem phòng trực tiếp được không ạ?</p>
+          <span class="text-muted" style="font-size: 11px;">10:29</span>
+        </div>
+        <div class="align-self-start p-3 bg-white border border-2 border-dark rounded-3 shadow-sm" style="max-width: 75%;">
+          <p class="mb-1 small">Chiều mai khoảng 15h cháu qua xem phòng nhé, phòng đang trống sẵn rồi.</p>
+          <span class="text-muted" style="font-size: 11px;">10:30</span>
+        </div>
+      </div>
+
+      <!-- Input Bar -->
+      <form class="p-3 border-top border-2 border-dark bg-white d-flex gap-2" onsubmit="event.preventDefault();">
+        <input type="text" class="form-control border-2 border-dark" placeholder="Nhập tin nhắn..." required>
+        <button type="submit" class="fa-btn fa-btn-yellow px-4">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+</main>
+</body>
+</html>

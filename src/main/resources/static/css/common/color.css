@@ -1,0 +1,39 @@
+/* ==========================================================================
+   COLOR SYSTEM & UTILITY CLASSES (DÙNG CHUNG)
+   ========================================================================== */
+
+/* Background Color Utilities */
+.bg-fa-navy { background-color: var(--fa-navy) !important; }
+.bg-fa-navy-light { background-color: var(--fa-navy-light) !important; }
+.bg-fa-cream { background-color: var(--fa-cream) !important; }
+.bg-fa-yellow { background-color: var(--fa-yellow) !important; }
+.bg-fa-blue { background-color: var(--fa-blue) !important; }
+.bg-fa-mint { background-color: var(--fa-mint) !important; }
+.bg-fa-purple { background-color: var(--fa-purple) !important; }
+.bg-fa-coral { background-color: var(--fa-coral) !important; }
+.bg-fa-orange { background-color: var(--fa-orange) !important; }
+
+/* Text Color Utilities */
+.text-fa-navy { color: var(--fa-navy) !important; }
+.text-fa-navy-light { color: var(--fa-navy-light) !important; }
+
+/* Button Color Variants */
+.fa-btn-yellow { background-color: var(--fa-yellow); }
+.fa-btn-yellow:hover { background-color: var(--fa-yellow-hover); }
+.fa-btn-mint { background-color: var(--fa-mint); }
+.fa-btn-blue { background-color: var(--fa-blue); }
+.fa-btn-purple { background-color: var(--fa-purple); }
+.fa-btn-coral { background-color: var(--fa-coral); }
+.fa-btn-white { background-color: var(--fa-white); }
+.fa-btn-navy {
+  background-color: var(--fa-navy);
+  color: var(--fa-white);
+}
+.fa-btn-navy:hover {
+  color: var(--fa-yellow);
+}
+
+/* Traffic Signal Dots */
+.traffic-dot-red { background-color: #FF6B6B; }
+.traffic-dot-yellow { background-color: #FFF3BF; }
+.traffic-dot-green { background-color: #51CF66; }
