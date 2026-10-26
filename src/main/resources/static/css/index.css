@@ -1,0 +1,562 @@
+/* ==========================================================================
+ 1. DESIGN TOKENS (FONTAWESOME NEO-BRUTALISM PALETTE)
+ ========================================================================== */
+:root {
+  --font-heading: 'Baloo 2', 'Be Vietnam Pro', sans-serif;
+  --font-body: 'Plus Jakarta Sans', 'Be Vietnam Pro', sans-serif;
+  --fa-navy: #183153;
+  --fa-navy-light: #2b4c7e;
+  --fa-cream: #FFFDF7;
+  --fa-bg-alt: #F0F4F8;
+  --fa-yellow: #FFD43B;
+  --fa-yellow-hover: #fcc419;
+  --fa-blue: #74C0FC;
+  --fa-mint: #63E6BE;
+  --fa-purple: #B197FC;
+  --fa-coral: #FFA8A8;
+  --fa-orange: #FF922B;
+  --fa-white: #FFFFFF;
+
+  --border-thick: 3px solid var(--fa-navy);
+  --border-medium: 2.5px solid var(--fa-navy);
+  --shadow-sm: 0 3px 0 var(--fa-navy);
+  --shadow-md: 0 5px 0 var(--fa-navy);
+  --shadow-lg: 0 8px 0 var(--fa-navy);
+  --shadow-offset: 5px 5px 0 var(--fa-navy);
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--fa-cream);
+  color: var(--fa-navy);
+  background-image: radial-gradient(#18315318 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading, .heading-font {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--fa-navy);
+  letter-spacing: -0.01em;
+}
+
+/* ==========================================================================
+   2. TACTILE NEO-BRUTALIST UTILITIES & BOOTSTRAP OVERRIDES
+   ========================================================================== */
+.fa-card {
+  background: var(--fa-white);
+  border: var(--border-thick);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.fa-card-interactive:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.fa-btn {
+  font-weight: 800;
+  border: var(--border-medium);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  color: var(--fa-navy);
+  padding: 0.6rem 1.25rem;
+  transition: all 0.12s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fa-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  color: var(--fa-navy);
+}
+
+.fa-btn:active, .fa-btn.active-pressed {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--fa-navy);
+}
+
+.fa-btn-yellow {
+  background-color: var(--fa-yellow);
+}
+
+.fa-btn-yellow:hover {
+  background-color: var(--fa-yellow-hover);
+}
+
+.fa-btn-mint {
+  background-color: var(--fa-mint);
+}
+
+.fa-btn-blue {
+  background-color: var(--fa-blue);
+}
+
+.fa-btn-purple {
+  background-color: var(--fa-purple);
+}
+
+.fa-btn-coral {
+  background-color: var(--fa-coral);
+}
+
+.fa-btn-white {
+  background-color: var(--fa-white);
+}
+
+.fa-btn-navy {
+  background-color: var(--fa-navy);
+  color: var(--fa-white);
+}
+
+.fa-btn-navy:hover {
+  color: var(--fa-yellow);
+}
+
+/* Tactile Filter Pills */
+.filter-pill {
+  border: var(--border-medium);
+  border-radius: var(--radius-pill);
+  background: var(--fa-white);
+  color: var(--fa-navy);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.45rem 1rem;
+  box-shadow: 0 3px 0 var(--fa-navy);
+  transition: all 0.12s ease;
+  cursor: pointer;
+}
+
+.filter-pill:hover {
+  transform: translateY(-2px);
+  background: #f8f9fa;
+}
+
+.filter-pill.active {
+  background: var(--fa-yellow);
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--fa-navy);
+}
+
+.amenity-toggle {
+  border: var(--border-medium);
+  border-radius: var(--radius-md);
+  background: var(--fa-white);
+  color: var(--fa-navy);
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 0.55rem 0.9rem;
+  box-shadow: 0 3px 0 var(--fa-navy);
+  transition: all 0.12s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.amenity-toggle.active {
+  background: var(--fa-mint);
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--fa-navy);
+}
+
+/* Floating Stickers & Badges */
+.fa-badge {
+  border: 2px solid var(--fa-navy);
+  border-radius: var(--radius-pill);
+  padding: 0.3rem 0.8rem;
+  font-weight: 800;
+  font-size: 0.78rem;
+  box-shadow: 2px 2px 0 var(--fa-navy);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.sticker-rotate-left {
+  transform: rotate(-3deg);
+}
+
+.sticker-rotate-right {
+  transform: rotate(3deg);
+}
+
+/* Custom Range Slider */
+.fa-range {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 14px;
+  background: var(--fa-bg-alt);
+  border: 2.5px solid var(--fa-navy);
+  border-radius: var(--radius-pill);
+  outline: none;
+}
+
+.fa-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--fa-yellow);
+  border: 3px solid var(--fa-navy);
+  box-shadow: 0 2px 0 var(--fa-navy);
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.fa-range::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+/* Custom Select */
+.fa-select {
+  border: var(--border-medium);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  font-weight: 700;
+  color: var(--fa-navy);
+  padding: 0.65rem 1rem;
+  background-color: var(--fa-white);
+  cursor: pointer;
+}
+
+.fa-select:focus {
+  border-color: var(--fa-navy);
+  box-shadow: 0 0 0 3px var(--fa-yellow), var(--shadow-sm);
+}
+
+/* ==========================================================================
+   3. BENTO GRID SHOWCASE
+   ========================================================================== */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(240px, auto);
+  grid-auto-flow: dense;
+  gap: 1.5rem;
+}
+
+.bento-item {
+  background: var(--fa-white);
+  border: var(--border-thick);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-offset);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bento-item:hover {
+  transform: translate(-3px, -5px);
+  box-shadow: 8px 10px 0 var(--fa-navy);
+}
+
+/* Grid Spans (Dynamic & Static Column Spans) */
+.bento-hero {
+  grid-column: span 7;
+  grid-row: span 2;
+}
+
+.bento-tall {
+  grid-column: span 5;
+  grid-row: span 2;
+}
+
+.bento-wide {
+  grid-column: span 6;
+  grid-row: span 1;
+}
+
+.bento-medium {
+  grid-column: span 6;
+  grid-row: span 1;
+}
+
+.bento-col-8 {
+  grid-column: span 8;
+}
+
+.bento-col-4 {
+  grid-column: span 4;
+}
+
+.bento-col-6 {
+  grid-column: span 6;
+}
+
+.bento-full {
+  grid-column: span 12;
+}
+
+.bento-row-2 {
+  grid-row: span 2;
+}
+
+@media (max-width: 991px) {
+  .bento-hero, .bento-tall, .bento-wide, .bento-medium,
+  .bento-col-8, .bento-col-4, .bento-col-6, .bento-full {
+    grid-column: span 12;
+    grid-row: span 1;
+  }
+}
+
+.room-img-wrapper {
+  position: relative;
+  height: 230px;
+  overflow: hidden;
+  border-bottom: var(--border-thick);
+  background: var(--fa-navy);
+}
+
+.bento-row-2 .room-img-wrapper,
+.bento-tall .room-img-wrapper,
+.bento-hero .room-img-wrapper {
+  height: 290px;
+}
+
+.room-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.bento-item:hover .room-img-wrapper img {
+  transform: scale(1.05);
+}
+
+.fa-sticker {
+  position: absolute;
+  z-index: 3;
+  font-weight: 800;
+  font-size: 0.8rem;
+  padding: 0.35rem 0.85rem;
+  border: var(--border-medium);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.sticker-top-left {
+  top: 14px;
+  left: 14px;
+  transform: rotate(-3deg);
+}
+
+.sticker-top-right {
+  top: 14px;
+  right: 14px;
+  transform: rotate(3deg);
+}
+
+.price-tag-brutal {
+  background: var(--fa-yellow);
+  border: var(--border-medium);
+  box-shadow: var(--shadow-sm);
+  padding: 0.4rem 0.95rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--fa-navy);
+  display: inline-block;
+}
+
+.distance-pill {
+  background: var(--fa-white);
+  border: var(--border-medium);
+  border-radius: var(--radius-sm);
+  padding: 0.25rem 0.65rem;
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Polaroid Card Specific */
+.polaroid-frame {
+  background: var(--fa-white);
+  padding: 1rem 1rem 1.25rem 1rem;
+  border: var(--border-thick);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+/* ==========================================================================
+   4. INTERACTIVE RADAR MAP
+   ========================================================================== */
+.radar-container {
+  background: var(--fa-navy);
+  border: var(--border-thick);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 2rem;
+  color: var(--fa-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.radar-circle-wrap, .radar-arena {
+  position: relative;
+  width: 100%;
+  height: 430px;
+  background: radial-gradient(circle, #244775 0%, #183153 70%);
+  border: 3px solid var(--fa-white);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.radar-ring {
+  position: absolute;
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.ring-1 {
+  width: 150px;
+  height: 150px;
+}
+
+.ring-2 {
+  width: 280px;
+  height: 280px;
+}
+
+.ring-3 {
+  width: 400px;
+  height: 400px;
+}
+
+@media (max-width: 576px) {
+  .radar-circle-wrap, .radar-arena {
+    height: 330px;
+  }
+  .ring-1 { width: 110px; height: 110px; }
+  .ring-2 { width: 200px; height: 200px; }
+  .ring-3 { width: 290px; height: 290px; }
+  .radar-pin {
+    font-size: 0.72rem;
+    padding: 0.2rem 0.5rem;
+  }
+  .radar-center-uni {
+    font-size: 0.78rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+.radar-sweep {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: conic-gradient(from 0deg, rgba(99, 230, 190, 0.4), transparent 60%);
+  border-radius: 50%;
+  animation: sweep 5s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes sweep {
+  from {
+    transform: rotate(0deg) scale(2);
+  }
+  to {
+    transform: rotate(360deg) scale(2);
+  }
+}
+
+.radar-center-uni, .campus-center-hub {
+  position: relative;
+  z-index: 5;
+  background: var(--fa-yellow);
+  color: var(--fa-navy);
+  border: 3px solid var(--fa-white);
+  box-shadow: 0 0 0 5px var(--fa-navy);
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.radar-pin {
+  position: absolute;
+  z-index: 6;
+  background: var(--fa-white);
+  color: var(--fa-navy);
+  border: 2.5px solid var(--fa-navy);
+  box-shadow: 0 4px 0 #000;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-weight: 800;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+
+.radar-pin:hover,
+.radar-pin.active,
+.radar-pin.active-pin {
+  background: var(--fa-mint);
+  transform: scale(1.15) translateY(-3px);
+  z-index: 10;
+  box-shadow: 0 6px 0 var(--fa-navy);
+}
+
+.radar-pin.active-pin::after,
+.radar-pin.active::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border: 2.5px solid var(--fa-navy);
+  border-radius: var(--radius-pill);
+  animation: pulseRing 1.4s infinite;
+}
+
+@keyframes pulseRing {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+}
+
+/* Toast Notification */
+.fa-toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+}

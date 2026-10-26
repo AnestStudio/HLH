@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrọAwesome — Tìm Trọ Cực Chất Quanh Trường</title>
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FontAwesome 6 Free -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Baloo 2 (Heading) & Plus Jakarta Sans / Be Vietnam Pro (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+      rel="stylesheet">
+
+  <link rel="stylesheet" th:href="@{/css/index.css}" href="/css/index.css">
+</head>
+<body>
+
+<!-- ==========================================================================
+     TOP ANNOUNCEMENT STRIP
+     ========================================================================== -->
+<div class="py-2 px-3 text-center fw-bold border-bottom border-3 border-dark"
+     style="background-color: var(--fa-mint); font-size: 0.88rem;">
+  <span class="fa-badge bg-warning me-2"><i class="fa-solid fa-bolt"></i> MÙA NHẬP HỌC 2026</span>
+  Đã xác thực <strong>1,420+ phòng trọ chính chủ</strong> quanh các trường Đại học — Không môi giới, xem phòng 360° miễn
+  phí!
+  <a href="#radarSection" class="text-decoration-underline ms-2" style="color: var(--fa-navy);">Mở Radar Quanh Trường <i
+      class="fa-solid fa-arrow-right"></i></a>
+</div>
+
+<!-- ==========================================================================
+     STICKY NAVBAR (FONTAWESOME AESTHETIC)
+     ========================================================================== -->
+<nav class="navbar navbar-expand-lg sticky-top py-3"
+     style="background-color: rgba(255, 253, 247, 0.95); backdrop-filter: blur(8px); border-bottom: var(--border-thick);">
+  <div class="container">
+    <!-- Brand Logo -->
+    <a class="navbar-brand d-flex align-items-center gap-2" th:href="@{/}" href="/">
+      <div class="d-flex align-items-center justify-content-center"
+           style="width: 46px; height: 46px; background: var(--fa-yellow); border: var(--border-thick); border-radius: 14px; box-shadow: 0 4px 0 var(--fa-navy);">
+        <i class="fa-solid fa-house-chimney-window fs-4" style="color: var(--fa-navy);"></i>
+      </div>
+      <div>
+        <span class="font-heading fs-3 fw-bold d-block lh-1">TrọAwesome</span>
+        <span class="badge rounded-pill"
+              style="background: var(--fa-purple); color: var(--fa-navy); border: 1.5px solid var(--fa-navy); font-size: 0.65rem;">FONT-AWESOME EDITION</span>
+      </div>
+    </a>
+
+    <!-- Mobile Burger -->
+    <button class="navbar-toggler fa-btn fa-btn-white py-2 px-3" type="button" data-bs-toggle="collapse"
+            data-bs-target="#mainNav">
+      <i class="fa-solid fa-bars fs-5"></i>
+    </button>
+
+    <!-- Nav Links -->
+    <div class="collapse navbar-collapse mt-3 mt-lg-0" id="mainNav">
+      <ul class="navbar-nav mx-auto gap-2">
+        <li class="nav-item">
+          <a class="nav-link fw-bold px-3 rounded-3" href="#bentoSection" style="color: var(--fa-navy);">
+            <i class="fa-solid fa-wand-magic-sparkles me-1 text-warning"></i> Bento Trọ Chất
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold px-3 rounded-3" href="#radarSection" style="color: var(--fa-navy);">
+            <i class="fa-solid fa-satellite-dish me-1 text-info"></i> Radar Quanh Trường
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold px-3 rounded-3" href="#roommateSection" style="color: var(--fa-navy);">
+            <i class="fa-solid fa-user-group me-1 text-success"></i> Tìm Bạn Ở Ghép
+          </a>
+        </li>
+      </ul>
+
+      <!-- Right Action Buttons -->
+      <div class="d-flex flex-wrap align-items-center gap-2 mt-2 mt-lg-0">
+        <button class="fa-btn fa-btn-white position-relative" onclick="showSavedToast()">
+          <i class="fa-solid fa-heart text-danger"></i>
+          <span>Đã lưu</span>
+          <span id="savedCountBadge"
+                class="badge rounded-pill bg-warning text-dark border border-2 border-dark">3</span>
+        </button>
+
+
+        <button class="fa-btn fa-btn-yellow" onclick="showPostModal()">
+          <i class="fa-solid fa-plus-circle"></i>
+          <span>Đăng Tin Trọ</span>
+        </button>
+
+        <a class="fa-btn fa-btn-white text-decoration-none" th:href="@{/login}" href="/login">
+          <i class="fa-solid fa-right-to-bracket"></i>
+          <span>Đăng nhập</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ==========================================================================
+     HERO SECTION & COMMAND CENTER SEARCH FILTER
+     ========================================================================== -->
+<header class="py-4 py-lg-5 position-relative">
+  <div class="container">
+    <!-- Hero Headline Row -->
+    <div class="row align-items-center mb-4 g-4">
+      <div class="col-lg-7">
+        <div class="d-inline-flex align-items-center gap-2 fa-badge sticker-rotate-left mb-3"
+             style="background: var(--fa-blue);">
+          <i class="fa-solid fa-compass"></i> HỆ THỐNG SĂN TRỌ THẾ HỆ MỚI
+        </div>
+        <h1 class="display-4 fw-bold mb-3 lh-sm">
+          Tìm nhà trọ <span class="px-3 py-1 d-inline-block rounded-4"
+                            style="background: var(--fa-yellow); border: var(--border-thick); box-shadow: 4px 4px 0 var(--fa-navy); transform: rotate(-1.5deg);">Chuẩn Gu</span>,
+          đi học đúng giờ!
+        </h1>
+        <p class="fs-5 fw-medium mb-0" style="color: var(--fa-navy-light);">
+          Không còn cảnh lướt hàng trăm tin rác. Chọn trường của bạn, kéo thanh khoảng cách và khám phá ngay các căn
+          phòng được kiểm duyệt thực tế 100%.
+        </p>
+      </div>
+
+      <!-- Hero Fun Stats Cards -->
+      <div class="col-lg-5">
+        <div class="row g-3">
+          <div class="col-6">
+            <div class="fa-card p-3 sticker-rotate-left" style="background: var(--fa-mint);">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="fa-badge bg-white"><i class="fa-solid fa-shield-halved text-success"></i> Verified</span>
+                <i class="fa-solid fa-camera-rotate fs-3"></i>
+              </div>
+              <h3 class="mb-0 fw-bold">100% Ảnh Thật</h3>
+              <small class="fw-bold">Sai ảnh đền ngay 500k chi phí đi lại</small>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="fa-card p-3 sticker-rotate-right" style="background: var(--fa-coral);">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="fa-badge bg-white"><i class="fa-solid fa-bolt text-warning"></i> Siêu tốc</span>
+                <i class="fa-solid fa-motorcycle fs-3"></i>
+              </div>
+              <h3 class="mb-0 fw-bold">&lt; 5 Phút</h3>
+              <small class="fw-bold">Đo chính xác thời gian từ trọ tới giảng đường</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================================================================
+         INTERACTIVE SEARCH "COMMAND CENTER" PANEL
+         ================================================================== -->
+    <div class="fa-card overflow-hidden" style="box-shadow: var(--shadow-lg);">
+      <!-- Command Center Top Window Bar -->
+      <div class="px-4 py-3 d-flex flex-wrap justify-content-between align-items-center gap-2"
+           style="background: var(--fa-yellow); border-bottom: var(--border-thick);">
+        <div class="d-flex align-items-center gap-2">
+          <span class="d-inline-block rounded-circle border border-2 border-dark"
+                style="width:14px;height:14px;background:#FF6B6B;"></span>
+          <span class="d-inline-block rounded-circle border border-2 border-dark"
+                style="width:14px;height:14px;background:#FFF3BF;"></span>
+          <span class="d-inline-block rounded-circle border border-2 border-dark"
+                style="width:14px;height:14px;background:#51CF66;"></span>
+          <span class="font-heading fs-5 ms-2"><i class="fa-solid fa-sliders me-2"></i>BỘ LỌC TÌM TRỌ THÔNG MINH (COMMAND CENTER)</span>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+                        <span class="fa-badge bg-white" id="liveResultCount">
+                            <i class="fa-solid fa-fire text-danger"></i> Đang khớp: 6 phòng cực phẩm
+                        </span>
+          <button class="btn btn-sm fw-bold text-decoration-underline" onclick="resetAllFilters()">
+            <i class="fa-solid fa-rotate-left"></i> Đặt lại bộ lọc
+          </button>
+        </div>
+      </div>
+
+      <!-- Command Center Body -->
+      <div class="p-4 bg-white">
+        <div class="row g-4">
+          <!-- 1. University / Landmark Selector -->
+          <div class="col-lg-4 col-md-6">
+            <label for="campusSelect" class="form-label fw-extrabold mb-2 d-flex align-items-center gap-2">
+              <span class="fa-badge" style="background: var(--fa-blue);"><i class="fa-solid fa-graduation-cap"></i> BƯỚC 1</span>
+              <strong>Trường ĐH / Khu vực của bạn</strong>
+            </label>
+            <select id="campusSelect" class="form-select fa-select" onchange="handleFilterChange()">
+              <option value="ALL">🌍 Tất cả khu vực (Toàn bộ trường ĐH)</option>
+              <option value="BACHKHOA" selected>🏛️ ĐH Bách Khoa - Kinh Tế - Xây Dựng</option>
+              <option value="CAUGIAY">🎓 ĐH Quốc Gia - Sư Phạm - Báo Chí (Cầu Giấy)</option>
+              <option value="FPT">💻 ĐH FPT & Khu Công Nghệ Cao</option>
+              <option value="VINH">🌟 Đại Học Vinh (Nghệ An)</option>
+            </select>
+            <div class="mt-2 small fw-bold text-muted">
+              <i class="fa-solid fa-location-crosshairs text-primary me-1"></i> Tự động tính khoảng cách từ cổng chính
+              của trường
+            </div>
+          </div>
+
+          <!-- 2. Distance Slider with Travel Time Calculator -->
+          <div class="col-lg-4 col-md-6">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <label for="distanceRange" class="form-label fw-bold mb-0 d-flex align-items-center gap-2">
+                <span class="fa-badge" style="background: var(--fa-mint);"><i
+                    class="fa-solid fa-route"></i> BƯỚC 2</span>
+                <strong>Bán kính tới trường</strong>
+              </label>
+              <span id="distanceBadge" class="fa-badge" style="background: var(--fa-yellow);">
+                                    &le; 2.5 km (~6 phút đi xe)
+                                </span>
+            </div>
+            <div class="px-1 pt-2">
+              <input type="range" id="distanceRange" class="fa-range" min="0.5" max="5.0" step="0.5" value="2.5"
+                     oninput="updateDistanceDisplay(this.value)">
+              <div class="d-flex justify-content-between small fw-bold mt-2">
+                <span><i class="fa-solid fa-person-walking"></i> 500m (Đi bộ)</span>
+                <span>1.5km</span>
+                <span>3.0km</span>
+                <span>5.0km <i class="fa-solid fa-motorcycle"></i></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Budget Price Range Pills -->
+          <div class="col-lg-4 col-md-12">
+            <label class="form-label fw-bold mb-2 d-flex align-items-center gap-2">
+              <span class="fa-badge" style="background: var(--fa-purple);"><i class="fa-solid fa-sack-dollar"></i> BƯỚC 3</span>
+              <strong>Khoảng giá thuê / tháng</strong>
+            </label>
+            <div class="d-flex flex-wrap gap-2" id="priceFilterGroup">
+              <button type="button" class="filter-pill active" data-price="ALL" onclick="selectPricePill(this)">Tất cả
+                mức giá
+              </button>
+              <button type="button" class="filter-pill" data-price="UNDER_25" onclick="selectPricePill(this)">&lt; 2.5
+                Triệu
+              </button>
+              <button type="button" class="filter-pill" data-price="25_40" onclick="selectPricePill(this)">2.5 - 4
+                Triệu
+              </button>
+              <button type="button" class="filter-pill" data-price="OVER_40" onclick="selectPricePill(this)">&gt; 4
+                Triệu (Studio)
+              </button>
+            </div>
+          </div>
+
+          <hr class="my-2 border-2 border-dark opacity-25">
+
+          <!-- 4. Room Area Size Pills -->
+          <div class="col-lg-4">
+            <label class="form-label fw-bold mb-2">
+              <i class="fa-solid fa-ruler-combined me-1"></i> Diện tích phòng:
+            </label>
+            <div class="d-flex flex-wrap gap-2" id="areaFilterGroup">
+              <button type="button" class="filter-pill active" data-area="ALL" onclick="selectAreaPill(this)">Mọi diện
+                tích
+              </button>
+              <button type="button" class="filter-pill" data-area="SMALL" onclick="selectAreaPill(this)">&lt; 22m²
+              </button>
+              <button type="button" class="filter-pill" data-area="MEDIUM" onclick="selectAreaPill(this)">22 - 30m²
+              </button>
+              <button type="button" class="filter-pill" data-area="LARGE" onclick="selectAreaPill(this)">&gt; 30m²
+              </button>
+            </div>
+          </div>
+
+          <!-- 5. Must-Have Amenities Quick Toggles -->
+          <div class="col-lg-8">
+            <label class="form-label fw-bold mb-2">
+              <i class="fa-solid fa-layer-group me-1"></i> Tiện ích bắt buộc (Click để bật/tắt):
+            </label>
+            <div class="d-flex flex-wrap gap-2" id="amenityGroup">
+              <button type="button" class="amenity-toggle" data-amenity="no_curfew" onclick="toggleAmenity(this)">
+                <i class="fa-solid fa-key text-warning"></i> Không chung chủ / Giờ tự do
+              </button>
+              <button type="button" class="amenity-toggle" data-amenity="loft" onclick="toggleAmenity(this)">
+                <i class="fa-solid fa-stairs text-primary"></i> Có gác xép
+              </button>
+              <button type="button" class="amenity-toggle" data-amenity="balcony" onclick="toggleAmenity(this)">
+                <i class="fa-solid fa-sun text-warning"></i> Ban công / Cửa sổ lớn
+              </button>
+              <button type="button" class="amenity-toggle" data-amenity="pet" onclick="toggleAmenity(this)">
+                <i class="fa-solid fa-paw text-danger"></i> Nuôi thú cưng
+              </button>
+              <button type="button" class="amenity-toggle" data-amenity="full_furniture" onclick="toggleAmenity(this)">
+                <i class="fa-solid fa-couch text-success"></i> Full nội thất
+              </button>
+              <button type="button" class="amenity-toggle" data-amenity="fingerprint" onclick="toggleAmenity(this)">
+                <i class="fa-solid fa-fingerprint text-info"></i> Khóa vân tay
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= 3. KHU VỰC HIỂN THỊ "WOW": BENTO MAGAZINE SHOWCASE ================= -->
+<section id="bentoSection" class="py-4">
+  <div class="container">
+    <div class="d-flex flex-wrap justify-content-between align-items-end mb-4 gap-3">
+      <div>
+                    <span class="badge mb-2"
+                          style="background: var(--fa-purple); color: var(--fa-navy); border: 2px solid var(--fa-navy); font-weight: 800;">
+                        <i class="fa-solid fa-fire"></i> BENTO SHOWCASE ĐỘC QUYỀN
+                    </span>
+        <h2 class="display-6 mb-0">Bộ Sưu Tập Trọ "Vào Là Mê"</h2>
+      </div>
+      <div class="d-flex gap-2">
+        <button class="fa-btn fa-btn-mint" onclick="shuffleBentoHighlight()">
+          <i class="fa-solid fa-shuffle"></i> Đổi Góc Nhìn Ngẫu Nhiên
+        </button>
+      </div>
+    </div>
+
+    <!-- LƯỚI BENTO BẤT ĐỐI XỨNG (ASYMMETRIC BENTO GRID) -->
+    <div class="bento-grid" id="bentoContainer">
+
+      <!-- Ô BENTO 1: HERO FEATURED ROOM (Chiếm 8 cột) -->
+      <article class="bento-item bento-col-8" data-category="mid" style="background: #FFF9DB;">
+                    <span class="fa-sticker sticker-top-left" style="background: var(--fa-mint);">
+                        <i class="fa-solid fa-circle-check"></i> 99% Hợp Gu Của Bạn
+                    </span>
+        <span class="fa-sticker sticker-top-right" style="background: var(--fa-coral);">
+                        <i class="fa-solid fa-fire-flame-curved"></i> Đang có 6 bạn xem
+                    </span>
+
+        <div class="row g-0 h-100">
+          <div class="col-md-7 position-relative">
+            <div class="room-img-wrapper h-100" style="border-bottom: none; border-right: var(--border-thick);">
+              <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80"
+                   alt="Studio Gác Xép">
+            </div>
+          </div>
+          <div class="col-md-5 p-4 d-flex flex-column justify-content-between">
+            <div>
+              <div class="d-flex flex-wrap gap-2 mb-2">
+                                    <span class="distance-pill" style="background: var(--fa-blue);">
+                                        <i class="fa-solid fa-person-walking"></i> Cách cổng trường 350m
+                                    </span>
+                <span class="distance-pill">
+                                        <i class="fa-solid fa-expand"></i> 28m²
+                                    </span>
+              </div>
+              <h3 class="h4 mb-2">The Sunlight Loft - Ngõ Tự Do</h3>
+              <p class="small text-secondary fw-semibold mb-3">
+                Full nội thất gỗ thông ấm áp, cửa kính kịch trần đón nắng sáng, có máy giặt riêng và ban công trồng cây
+                cực chill.
+              </p>
+              <div class="d-flex flex-wrap gap-1 mb-3">
+                <span class="badge bg-white text-dark border border-dark"><i class="fa-solid fa-paw text-danger"></i> Pet Friendly</span>
+                <span class="badge bg-white text-dark border border-dark"><i
+                    class="fa-solid fa-fingerprint text-primary"></i> Vân tay</span>
+                <span class="badge bg-white text-dark border border-dark"><i class="fa-solid fa-bolt text-warning"></i> Điện giá dân</span>
+              </div>
+            </div>
+
+            <div class="pt-3 border-top border-2 border-dark d-flex justify-content-between align-items-center">
+              <div>
+                <div class="small fw-bold text-muted">Giá trọn gói</div>
+                <div class="price-tag-brutal">3.8 Triệu/th</div>
+              </div>
+              <button class="fa-btn fa-btn-navy"
+                      onclick="openRoomPreview('The Sunlight Loft - Ngõ Tự Do', '3.8 Triệu/tháng', '350m tới cổng trường')">
+                <i class="fa-solid fa-vr-cardboard"></i> Xem 360°
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ô BENTO 2: TALL VERTICAL SHOWCASE (Chiếm 4 cột, cao 2 hàng) -->
+      <article class="bento-item bento-col-4 bento-row-2" data-category="high" style="background: #F3F0FF;">
+                    <span class="fa-sticker sticker-top-left" style="background: var(--fa-yellow);">
+                        <i class="fa-solid fa-crown"></i> Siêu Phẩm Ban Công
+                    </span>
+
+        <div class="room-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=700&q=80"
+               alt="Penthouse Mini">
+        </div>
+
+        <div class="p-4 d-flex flex-column justify-content-between flex-grow-1">
+          <div>
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="distance-pill" style="background: var(--fa-mint);">
+                                    <i class="fa-solid fa-motorcycle"></i> 4 phút chạy xe (900m)
+                                </span>
+              <span class="fw-bold small"><i class="fa-solid fa-star text-warning"></i> 4.9 (42)</span>
+            </div>
+
+            <h3 class="h4 mb-2">Skyline Studio Tầng Thượng</h3>
+            <p class="small fw-semibold text-secondary mb-3">
+              Căn góc 2 mặt thoáng nhìn thẳng ra hồ, có sân nướng BBQ riêng biệt, thang máy tốc độ cao, hầm để xe rộng.
+            </p>
+
+            <!-- Bảng chi phí minh bạch kiểu Neo-Brutalism -->
+            <div class="p-3 rounded-3 mb-3"
+                 style="background: var(--fa-white); border: var(--border-medium); box-shadow: var(--shadow-sm);">
+              <div class="fw-bold small mb-2 text-uppercase"><i class="fa-solid fa-receipt me-1"></i> Cam kết phí dịch
+                vụ chuẩn:
+              </div>
+              <div class="d-flex justify-content-between small fw-semibold border-bottom pb-1 mb-1">
+                <span>⚡ Điện sinh hoạt:</span>
+                <span class="text-success fw-bold">3.500đ / kWh</span>
+              </div>
+              <div class="d-flex justify-content-between small fw-semibold border-bottom pb-1 mb-1">
+                <span>💧 Nước sạch:</span>
+                <span>80.000đ / người</span>
+              </div>
+              <div class="d-flex justify-content-between small fw-semibold">
+                <span>🛵 Gửi xe máy:</span>
+                <span class="badge bg-warning text-dark border border-dark">Miễn phí 2 xe</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center pt-2">
+            <div class="price-tag-brutal" style="background: var(--fa-mint);">4.6 Triệu/th</div>
+            <button class="fa-btn fa-btn-yellow"
+                    onclick="openRoomPreview('Skyline Studio Tầng Thượng', '4.6 Triệu/tháng', '900m tới cổng trường')">
+              Đặt lịch xem <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ô BENTO 3: GIÁ SINH VIÊN (Chiếm 4 cột) -->
+      <article class="bento-item bento-col-4" data-category="low" style="background: #E6FCF5;">
+                    <span class="fa-sticker sticker-top-left" style="background: var(--fa-blue);">
+                        <i class="fa-solid fa-piggy-bank"></i> Tiết Kiệm Nhất
+                    </span>
+
+        <div class="room-img-wrapper" style="height: 175px;">
+          <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=600&q=80"
+               alt="Trọ Sinh Viên">
+        </div>
+
+        <div class="p-3 d-flex flex-column justify-content-between flex-grow-1">
+          <div>
+            <div class="d-flex gap-2 mb-2">
+              <span class="distance-pill"><i class="fa-solid fa-person-walking"></i> 200m đi bộ</span>
+              <span class="distance-pill">20m²</span>
+            </div>
+            <h3 class="h5 mb-1">Box Trọ Xanh - Sát Cổng Phụ</h3>
+            <p class="small text-secondary fw-semibold mb-2">
+              Ngủ nướng tới 6h55 vẫn kịp điểm danh ca 7h00. Có sẵn điều hòa, nóng lạnh, bàn học dài.
+            </p>
+          </div>
+          <div class="d-flex justify-content-between align-items-center pt-2 border-top border-dark">
+            <span class="price-tag-brutal py-1 px-2 fs-6">2.2 Triệu/th</span>
+            <button class="fa-btn py-1 px-3 small"
+                    onclick="openRoomPreview('Box Trọ Xanh - Sát Cổng Phụ', '2.2 Triệu/tháng', '200m đi bộ')">
+              Chi tiết
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ô BENTO 4: TÌM BẠN Ở GHÉP CỰC CHẤT (Chiếm 4 cột) -->
+      <article id="bentoRoommateArticle" class="bento-item bento-col-4" data-category="low"
+               style="background: #FFF0F6;">
+                    <span class="fa-sticker sticker-top-right" style="background: var(--fa-yellow);">
+                        <i class="fa-solid fa-handshake-angle"></i> Góc Ở Ghép 50/50
+                    </span>
+
+        <div class="p-4 d-flex flex-column justify-content-between h-100">
+          <div>
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div
+                  class="rounded-circle border border-3 border-dark d-flex align-items-center justify-content-center fw-bold fs-4"
+                  style="width: 58px; height: 58px; background: var(--fa-yellow); box-shadow: var(--shadow-sm);">
+                🧑‍💻
+              </div>
+              <div>
+                <h4 class="h5 mb-0">Tìm 1 Bạn Nam Ở Ghép</h4>
+                <span class="badge bg-info text-dark border border-dark">SV Năm 3 - CNTT</span>
+              </div>
+            </div>
+
+            <p class="small fw-semibold mb-3"
+               style="background: var(--fa-white); border: var(--border-medium); padding: 0.75rem; border-radius: var(--radius-sm);">
+              "Mình đã thuê sẵn phòng 32m² có gác xép + tủ lạnh + máy giặt cách trường 600m. Tìm bạn sạch sẽ, không hút
+              thuốc, tối hay code hoặc chơi game nhẹ nhàng!"
+            </p>
+
+            <div class="d-flex flex-wrap gap-1 mb-2">
+              <span class="distance-pill"><i class="fa-solid fa-couch"></i> Đủ đồ 100%</span>
+              <span class="distance-pill"><i class="fa-solid fa-wifi"></i> Wifi Mesh</span>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center pt-2 border-top border-2 border-dark">
+            <div>
+              <span class="small fw-bold d-block text-muted">Chia tiền phòng chỉ:</span>
+              <span class="price-tag-brutal py-1 px-2 fs-6" style="background: var(--fa-coral);">1.65 Triệu/người</span>
+            </div>
+            <button class="fa-btn fa-btn-mint py-2 px-3"
+                    onclick="openRoomPreview('Ở Ghép Chung Cư Mini 32m²', '1.65 Triệu/người', '600m tới trường')">
+              <i class="fa-solid fa-comments"></i> Nhắn làm quen
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4. Ý TƯỞNG WOW SỐ 2: RADAR QUÉT TRỌ QUANH TRƯỜNG ================= -->
+<section id="radarSection" class="py-5">
+  <div class="container">
+    <div class="radar-container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-5">
+                        <span class="badge mb-2"
+                              style="background: var(--fa-mint); color: var(--fa-navy); border: 2px solid var(--fa-white); font-weight: 800;">
+                            <i class="fa-solid fa-satellite"></i> RADAR TRỌ TƯƠNG TÁC TRỰC QUAN
+                        </span>
+          <h2 class="text-white display-6 mb-3">Định Vị Trọ Theo Vòng Bán Kính</h2>
+          <p class="text-light opacity-75 mb-4">
+            Bấm trực tiếp vào các **Nhãn Giá** trên màn hình Radar bên cạnh để soi nhanh khoảng cách thực tế từ tâm
+            trường Đại học tới từng ngõ trọ!
+          </p>
+
+          <!-- Thẻ hiển thị phòng đang chọn trên Radar -->
+          <div class="p-4 rounded-4 text-dark" id="radarDetailCard"
+               style="background: var(--fa-white); border: 3px solid var(--fa-yellow); box-shadow: 0 6px 0 #000;">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <span class="badge bg-warning text-dark border border-dark fw-bold" id="radarBadge">
+                                    Vòng 1: Bán kính 450m
+                                </span>
+              <span class="fw-bold text-success" id="radarWalkTime">
+                                    <i class="fa-solid fa-person-walking"></i> 5 phút đi bộ
+                                </span>
+            </div>
+            <h4 class="h5 mb-2" id="radarRoomTitle">Homestay Xanh Ngõ Trần Đại Nghĩa</h4>
+            <p class="small text-secondary fw-semibold mb-3" id="radarRoomDesc">
+              Cực kỳ an ninh, cổng vân tay 2 lớp, có khu bếp chung và sân phơi có mái che tự động.
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="price-tag-brutal" id="radarRoomPrice">3.2 Triệu/th</span>
+              <button class="fa-btn fa-btn-blue py-2" id="radarPreviewBtn"
+                      onclick="openQuickPeek(currentFilters.selectedRadarRoomId || 1)">
+                Xem ảnh thực tế <i class="fa-solid fa-camera"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Màn hình Radar Sóng Âm -->
+        <div class="col-lg-7">
+          <div class="radar-circle-wrap" id="radarArena">
+            <div class="radar-ring ring-1"></div>
+            <div class="radar-ring ring-2"></div>
+            <div class="radar-ring ring-3"></div>
+            <div class="radar-sweep"></div>
+
+            <!-- Tâm Radar: Trường Đại Học -->
+            <div class="radar-center-uni" id="radarCenterLabel">
+              <i class="fa-solid fa-graduation-cap"></i> ĐH Bách Khoa HN
+            </div>
+
+            <!-- Vùng hiển thị Pins tương tác động theo bộ lọc -->
+            <div id="radarPinsLayer" class="w-100 h-100 position-absolute top-0 start-0" style="pointer-events: none;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     ROOMMATE MATCHING & COMMUNITY REVIEW STRIP
+     ========================================================================== -->
+<section id="roommateSection" class="py-5">
+  <div class="container">
+    <div class="fa-card p-4 p-lg-5" style="background: linear-gradient(135deg, #FFF3BF 0%, #FFD43B 100%);">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+                        <span class="fa-badge bg-white mb-3">
+                            <i class="fa-solid fa-handshake-angle text-primary"></i> TÌM BẠN Ở GHÉP HỢP TÍNH CÁCH
+                        </span>
+          <h2 class="display-6 fw-bold mb-3">Phòng đẹp nhưng vượt ngân sách? Ghép trọ chia đôi tiền nhà ngay!</h2>
+          <p class="fs-6 fw-semibold mb-4">
+            Bộ lọc ghép bạn cùng phòng theo giờ giấc sinh hoạt (cú đêm hay dậy sớm), sở thích sạch sẽ, ngành học và ngân
+            sách.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <button class="fa-btn fa-btn-white"
+                    onclick="showToast('Đã mở danh sách 48 hồ sơ tìm bạn ở ghép quanh trường!')">
+              <i class="fa-solid fa-users-viewfinder"></i> Xem 48 Bạn Đang Tìm Phòng
+            </button>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="polaroid-frame sticker-rotate-right">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div
+                  class="rounded-circle border border-3 border-dark d-flex align-items-center justify-content-center fw-bold fs-4"
+                  style="width:56px;height:56px;background:var(--fa-purple);">
+                M
+              </div>
+              <div>
+                <h5 class="fw-bold mb-0">Minh Anh — SV Năm 2 KTQD</h5>
+                <span class="fa-badge" style="background: var(--fa-mint);">96% Hợp Lối Sống</span>
+              </div>
+            </div>
+            <p class="small fw-semibold mb-3 bg-light p-2 rounded-3 border border-2 border-dark">
+              "Mình đã thuê được phòng Studio có ban công cách trường 600m giá 4.2Tr, cần tìm 1 bạn nữ gọn gàng ở ghép
+              (mỗi người 2.1Tr/tháng, điện nước giá dân)!"
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="small fw-bold"><i
+                  class="fa-solid fa-cat text-warning me-1"></i> Có nuôi 1 bé mèo ngoan</span>
+              <button class="fa-btn fa-btn-mint py-1 px-3 small"
+                      onclick="showToast('Đã gửi lời chào kết nối tới Minh Anh!')">
+                Nhắn tin làm quen
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     FOOTER
+     ========================================================================== -->
+<footer class="py-4 border-top border-3 border-dark" style="background: var(--fa-navy); color: var(--fa-white);">
+  <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+    <div class="d-flex align-items-center gap-2">
+      <span class="badge bg-warning text-dark fs-6 border border-2 border-dark"><i class="fa-solid fa-house"></i> TrọAwesome</span>
+      <span class="small fw-semibold">© 2026 Thiết kế theo chuẩn FontAwesome Neo-Brutalism Design System.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ==========================================================================
+     MODAL: XEM CHI TIẾT PHÒNG NHANH (BENTO & RADAR PREVIEW)
+     ========================================================================== -->
+<div class="modal fade" id="roomPreviewModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content fa-card overflow-hidden"
+         style="border: var(--border-thick); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+      <div class="modal-header" style="background: var(--fa-yellow); border-bottom: var(--border-thick);">
+        <h5 class="modal-title font-heading fs-4 fw-bold" id="previewModalTitle">Chi tiết phòng trọ</h5>
+        <button type="button" class="btn-close border border-2 border-dark bg-white p-2 rounded-circle"
+                data-bs-dismiss="modal" aria-label="Đóng"></button>
+      </div>
+      <div class="modal-body p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <span class="badge bg-info text-dark border border-dark fs-6" id="previewModalDist">Cách trường 350m</span>
+          <span class="price-tag-brutal" id="previewModalPrice">3.8 Triệu/th</span>
+        </div>
+        <p class="fw-semibold text-secondary">
+          Phòng đã được đội ngũ <strong>TrọAwesome</strong> kiểm duyệt thực tế: Hình ảnh thật 100%, hợp đồng rõ ràng,
+          không thu phí môi giới sinh viên.
+        </p>
+        <div class="p-3 rounded-3 bg-light border border-2 border-dark mb-3">
+          <div class="fw-bold mb-1"><i class="fa-solid fa-shield-halved text-success"></i> Đặc quyền khi đặt lịch qua
+            TrọAwesome:
+          </div>
+          <ul class="small fw-semibold mb-0 ps-3">
+            <li>Giữ phòng miễn phí 24h sau khi xem.</li>
+            <li>Hỗ trợ xe bán tải chuyển trọ giảm 50%.</li>
+          </ul>
+        </div>
+        <button class="fa-btn fa-btn-mint w-100 justify-content-center" data-bs-dismiss="modal"
+                onclick="showToast('Đã gửi yêu cầu liên hệ chủ trọ thành công!')">
+          <i class="fa-solid fa-phone-volume"></i> Liên hệ Chủ Trọ (0988.xxx.xxx)
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==========================================================================
+     MODAL 1: ROOM QUICK-PEEK 360° DETAIL MODAL
+     ========================================================================== -->
+<div class="modal fade" id="roomQuickPeekModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content fa-card overflow-hidden" style="border-width: 3px;">
+      <div class="modal-header" style="background: var(--fa-yellow); border-bottom: var(--border-thick);">
+        <h5 class="modal-title font-heading fs-4" id="peekModalTitle">Chi tiết phòng trọ</h5>
+        <button type="button" class="btn-close border border-2 border-dark bg-white p-2 rounded-circle"
+                data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4" id="peekModalBody">
+        <!-- Dynamic Room Detail Content -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Toast Notification Container -->
+<div class="fa-toast-container" id="toastContainer"></div>
+
+<!-- Bootstrap 5.3 JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- ==========================================================================
+     APPLICATION LOGIC & INTERACTIVE DATA
+     ========================================================================== -->
+<script th:src="@{/js/index.js}" src="/js/index.js"></script>
+</body>
+</html>
