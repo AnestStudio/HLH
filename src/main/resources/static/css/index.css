@@ -1,5 +1,5 @@
 /* ==========================================================================
-   TROAWESOME — CSS RIÊNG BIỆT CỦA TRANG INDEX
+   HOLAHOME — CSS RIÊNG BIỆT CỦA TRANG INDEX
    Bao gồm: Bộ lọc tìm trọ, Bento Grid Showcase, Radar Quét Trọ, Polaroid Ở Ghép
    ========================================================================== */
 
@@ -15,7 +15,7 @@
   color: var(--fa-navy);
   font-weight: 700;
   font-size: 0.9rem;
-  padding: 0.45rem 1rem;
+  padding: 0.5rem 1rem;
   box-shadow: 0 3px 0 var(--fa-navy);
   transition: all 0.12s ease;
   cursor: pointer;
@@ -32,6 +32,12 @@
   box-shadow: 0 1px 0 var(--fa-navy);
 }
 
+#priceFilterGroup,
+#areaFilterGroup,
+#amenityGroup {
+  gap: 12px;
+}
+
 /* Nút bật/tắt tiện ích bắt buộc */
 .amenity-toggle {
   border: var(--border-medium);
@@ -39,8 +45,8 @@
   background: var(--fa-white);
   color: var(--fa-navy);
   font-weight: 700;
-  font-size: 0.88rem;
-  padding: 0.55rem 0.9rem;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
   box-shadow: 0 3px 0 var(--fa-navy);
   transition: all 0.12s ease;
   cursor: pointer;
@@ -84,14 +90,24 @@
 }
 
 /* ==========================================================================
-   2. BENTO MAGAZINE GRID SHOWCASE
+   2. BENTO MAGAZINE GRID SHOWCASE (3 CARDS PER ROW)
    ========================================================================== */
 .bento-grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: minmax(240px, auto);
-  grid-auto-flow: dense;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+}
+
+@media (max-width: 991px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .bento-item {
@@ -105,52 +121,43 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
 }
 
 .bento-item:hover {
-  transform: translate(-3px, -5px);
-  box-shadow: 8px 10px 0 var(--fa-navy);
+  transform: translate(-4px, -4px);
+  box-shadow: 6px 6px 0 var(--fa-navy);
+}
+
+/* Giá phòng trong bento-item */
+.bento-item .bento-price,
+.bento-item .text-danger.fs-5 {
+  font-family: var(--font-heading);
 }
 
 /* Bento Background Tints */
-.bg-bento-yellow { background-color: #FFF9DB !important; }
-.bg-bento-purple { background-color: #F3F0FF !important; }
-.bg-bento-mint { background-color: #E6FCF5 !important; }
-.bg-bento-pink { background-color: #FFF0F6 !important; }
-
-/* Grid Spans */
-.bento-hero {
-  grid-column: span 7;
-  grid-row: span 2;
+.bg-bento-yellow {
+  background-color: #FFF9DB !important;
 }
 
-.bento-tall {
-  grid-column: span 5;
-  grid-row: span 2;
+.bg-bento-purple {
+  background-color: #F3F0FF !important;
 }
 
-.bento-wide {
-  grid-column: span 6;
-  grid-row: span 1;
+.bg-bento-mint {
+  background-color: #E6FCF5 !important;
 }
 
-.bento-medium {
-  grid-column: span 6;
-  grid-row: span 1;
+.bg-bento-pink {
+  background-color: #FFF0F6 !important;
 }
 
-.bento-col-8 { grid-column: span 8; }
-.bento-col-4 { grid-column: span 4; }
-.bento-col-6 { grid-column: span 6; }
-.bento-full  { grid-column: span 12; }
-.bento-row-2 { grid-row: span 2; }
+.bg-bento-blue {
+  background-color: #E7F5FF !important;
+}
 
-@media (max-width: 991px) {
-  .bento-hero, .bento-tall, .bento-wide, .bento-medium,
-  .bento-col-8, .bento-col-4, .bento-col-6, .bento-full {
-    grid-column: span 12;
-    grid-row: span 1;
-  }
+.bg-bento-orange {
+  background-color: #FFF4E6 !important;
 }
 
 /* Bento Image Wrapper */
@@ -184,11 +191,11 @@
   background: var(--fa-yellow);
   border: var(--border-medium);
   box-shadow: var(--shadow-sm);
-  padding: 0.4rem 0.95rem;
+  padding: 0.5rem 1rem;
   border-radius: var(--radius-md);
   font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 1.25rem;
+  font-weight: 600;
+  font-size: 18px;
   color: var(--fa-navy);
   display: inline-block;
 }
@@ -206,54 +213,101 @@
 }
 
 /* ==========================================================================
-   3. RADAR QUÉT TRỌ TƯƠNG TÁC QUANH TRƯỜNG
+   3. RADAR QUÉT TRỌ TƯƠNG TÁC QUANH TRƯỜNG (LIGHT NEO-BRUTALISM THEME)
    ========================================================================== */
 .radar-container {
-  background: var(--fa-navy);
+  background-color: #FFFDF7;
+  background-image: radial-gradient(rgba(24, 49, 83, 0.07) 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
   border: var(--border-thick);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  padding: 2rem;
-  color: var(--fa-white);
+  box-shadow: 6px 6px 0 var(--fa-navy);
+  padding: 1.5rem;
+  color: var(--fa-navy);
   position: relative;
   overflow: hidden;
 }
 
-.radar-circle-wrap, .radar-arena {
+.radar-circle-wrap,
+.radar-arena {
   position: relative;
   width: 100%;
   height: 430px;
-  background: radial-gradient(circle, #244775 0%, #183153 70%);
-  border: 3px solid var(--fa-white);
+  background: radial-gradient(circle, #FFFFFF 0%, #F0F6FC 55%, #DCE9F6 100%);
+  border: var(--border-thick);
   border-radius: var(--radius-lg);
+  box-shadow: inset 0 2px 10px rgba(24, 49, 83, 0.07);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
+.radar-axis-x {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: rgba(24, 49, 83, 0.1);
+  pointer-events: none;
+}
+
+.radar-axis-y {
+  position: absolute;
+  height: 100%;
+  width: 1px;
+  background: rgba(24, 49, 83, 0.1);
+  pointer-events: none;
+}
+
 .radar-ring {
   position: absolute;
-  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border: 2px dashed rgba(24, 49, 83, 0.22);
   border-radius: 50%;
   pointer-events: none;
 }
 
-.ring-1 { width: 150px; height: 150px; }
-.ring-2 { width: 280px; height: 280px; }
-.ring-3 { width: 400px; height: 400px; }
+.ring-1 {
+  width: 150px;
+  height: 150px;
+}
+
+.ring-2 {
+  width: 280px;
+  height: 280px;
+}
+
+.ring-3 {
+  width: 400px;
+  height: 400px;
+}
 
 @media (max-width: 576px) {
-  .radar-circle-wrap, .radar-arena {
+
+  .radar-circle-wrap,
+  .radar-arena {
     height: 330px;
   }
-  .ring-1 { width: 110px; height: 110px; }
-  .ring-2 { width: 200px; height: 200px; }
-  .ring-3 { width: 290px; height: 290px; }
+
+  .ring-1 {
+    width: 110px;
+    height: 110px;
+  }
+
+  .ring-2 {
+    width: 200px;
+    height: 200px;
+  }
+
+  .ring-3 {
+    width: 290px;
+    height: 290px;
+  }
+
   .radar-pin {
     font-size: 0.72rem;
     padding: 0.2rem 0.5rem;
   }
+
   .radar-center-uni {
     font-size: 0.78rem;
     padding: 0.4rem 0.8rem;
@@ -264,24 +318,30 @@
   position: absolute;
   width: 200px;
   height: 200px;
-  background: conic-gradient(from 0deg, rgba(99, 230, 190, 0.4), transparent 60%);
+  background: conic-gradient(from 0deg, rgba(116, 192, 252, 0.45), transparent 60%);
   border-radius: 50%;
   animation: sweep 5s linear infinite;
   pointer-events: none;
 }
 
 @keyframes sweep {
-  from { transform: rotate(0deg) scale(2); }
-  to { transform: rotate(360deg) scale(2); }
+  from {
+    transform: rotate(0deg) scale(2);
+  }
+
+  to {
+    transform: rotate(360deg) scale(2);
+  }
 }
 
-.radar-center-uni, .campus-center-hub {
+.radar-center-uni,
+.campus-center-hub {
   position: relative;
   z-index: 5;
   background: var(--fa-yellow);
   color: var(--fa-navy);
-  border: 3px solid var(--fa-white);
-  box-shadow: 0 0 0 5px var(--fa-navy);
+  border: var(--border-medium);
+  box-shadow: 0 0 0 3px rgba(255, 212, 59, 0.5), 0 3px 0 var(--fa-navy);
   padding: 0.55rem 1.1rem;
   border-radius: var(--radius-pill);
   font-family: var(--font-heading);
@@ -298,7 +358,7 @@
   background: var(--fa-white);
   color: var(--fa-navy);
   border: 2.5px solid var(--fa-navy);
-  box-shadow: 0 4px 0 #000;
+  box-shadow: 0 4px 0 var(--fa-navy);
   padding: 0.3rem 0.75rem;
   border-radius: var(--radius-pill);
   font-weight: 800;
@@ -314,7 +374,7 @@
 .radar-pin:hover,
 .radar-pin.active,
 .radar-pin.active-pin {
-  background: var(--fa-mint);
+  background: var(--fa-yellow);
   transform: scale(1.15) translateY(-3px);
   z-index: 10;
   box-shadow: 0 6px 0 var(--fa-navy);
@@ -335,6 +395,7 @@
     opacity: 1;
     transform: scale(1);
   }
+
   100% {
     opacity: 0;
     transform: scale(1.25);
@@ -342,18 +403,62 @@
 }
 
 /* ==========================================================================
-   4. POLAROID GHÉP TRỌ (ROOMMATE SHOWCASE)
+   4. CORKBOARD BẢNG GHIM Ở GHÉP (ROOMMATE CORKBOARD SHOWCASE)
    ========================================================================== */
-.polaroid-frame {
+
+/* Polaroid Card trên bảng bần */
+.polaroid-card {
   background: var(--fa-white);
-  padding: 1rem 1rem 1.25rem 1rem;
   border: var(--border-thick);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
+  box-shadow: 4px 4px 0 var(--fa-navy);
+  padding: 1rem 1rem 1.25rem 1rem;
+  position: relative;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.polaroid-card:hover {
+  transform: translateY(-4px) rotate(0deg) !important;
+  box-shadow: 6px 6px 0 var(--fa-navy);
+  z-index: 10;
+}
+
+/* Đinh ghim trên đầu thẻ Polaroid */
+.pin-thumbtack {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 22px;
+  background: #fa5252;
+  border: 2px solid var(--fa-navy);
+  border-radius: 50%;
+  box-shadow: 0 2px 0 var(--fa-navy);
+  z-index: 5;
+}
+
+/* Sticky Note thói quen */
+.sticky-note {
+  background: #fff9db;
+  border: var(--border-medium);
+  box-shadow: var(--shadow-sm);
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  transform: rotate(1.5deg);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--fa-navy);
+  line-height: 1.5;
 }
 
 .bg-roommate-gradient {
-  background: linear-gradient(135deg, #FFF3BF 0%, #FFD43B 100%) !important;
+  background: linear-gradient(135deg, #FFFDF7 0%, #FFF3BF 100%) !important;
 }
 
 /* ==========================================================================

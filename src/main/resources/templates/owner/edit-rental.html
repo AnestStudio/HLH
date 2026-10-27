@@ -11,22 +11,22 @@
   <div class="mx-auto" style="max-width: 760px;">
     <div class="p-4 p-md-5 bg-white border border-3 border-dark rounded-4 shadow-sm">
       <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1 class="h4 fw-bold mb-0">Chỉnh Sửa Tin Phòng Trọ</h1>
-        <a th:href="@{/owner/my-rentals}" class="btn btn-outline-dark btn-sm fw-bold">Hủy</a>
+        <h1 class="h4 fw-semibold mb-0">Chỉnh Sửa Tin Phòng Trọ</h1>
+        <a th:href="@{/owner/my-rentals}" class="btn btn-outline-dark btn-sm fw-semibold">Hủy</a>
       </div>
 
       <form th:action="@{/owner/edit-rental}" method="post">
         <div class="mb-3">
-          <label class="form-label fw-bold small">Tiêu đề tin đăng</label>
+          <label class="form-label fw-semibold small">Tiêu đề tin đăng</label>
           <input type="text" name="title" class="form-control border-dark" value="Phòng khép kín đầy đủ đồ, có ban công thoáng Cầu Giấy" required>
         </div>
         <div class="row g-3 mb-3">
           <div class="col-md-6">
-            <label class="form-label fw-bold small">Giá thuê (VNĐ/tháng)</label>
+            <label class="form-label fw-semibold small">Giá thuê (VNĐ/tháng)</label>
             <input type="number" name="price" class="form-control border-dark" value="3200000" required>
           </div>
           <div class="col-md-6">
-            <label class="form-label fw-bold small">Trạng thái phòng</label>
+            <label class="form-label fw-semibold small">Trạng thái phòng</label>
             <select name="status" class="form-select border-dark">
               <option value="AVAILABLE" selected>Còn phòng</option>
               <option value="RENTED">Đã cho thuê</option>

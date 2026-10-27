@@ -3,10 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title layout:title-pattern="$CONTENT_TITLE — $LAYOUT_TITLE">TrọAwesome</title>
+  <title layout:title-pattern="$CONTENT_TITLE — $LAYOUT_TITLE">HoLaHome</title>
 
   <!-- Common Head (Meta, CSRF, Bootstrap, FontAwesome, Base CSS) -->
   <th:block th:replace="~{fragments/head :: common_head}"></th:block>
+
+  <!-- Shared Auth Styles -->
+  <style>
+    .auth-card {
+      background-color: #fff;
+      border: 3px solid #212529 !important;
+      border-radius: 2rem !important;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    }
+    .auth-card .form-control {
+      border: var(--border-medium, 2px solid var(--fa-navy)) !important;
+      border-radius: var(--radius-md, 16px) !important;
+      padding: 0.55rem 0.9rem;
+    }
+    .auth-card .form-control:focus {
+      border-color: var(--fa-navy, #183153) !important;
+      box-shadow: 0 0 0 3px rgba(255, 212, 59, 0.4) !important;
+    }
+    .auth-card .form-check-input {
+      border: 2px solid #212529;
+      border-radius: 6px;
+    }
+    .auth-card .form-check-input:checked {
+      background-color: var(--fa-navy, #183153);
+      border-color: var(--fa-navy, #183153);
+    }
+  </style>
 
   <!-- Page Specific Styles Slot -->
   <th:block layout:fragment="page-styles"></th:block>
@@ -16,15 +43,17 @@
   <header class="py-3 border-bottom border-2 border-dark bg-white">
     <div class="container text-center">
       <a th:href="@{/}" class="text-decoration-none d-inline-flex align-items-center gap-2">
-        <span class="px-3 py-1 border border-2 border-dark rounded-3 fw-bold text-dark fs-5 bg-warning">
-          <i class="fa-solid fa-house-chimney me-1"></i>TrọAwesome
+        <span class="px-3 py-1 border border-2 border-dark rounded-3 fw-semibold text-dark fs-5 bg-warning shadow-sm">
+          <i class="fa-solid fa-house-chimney me-1"></i>HoLaHome
         </span>
       </a>
     </div>
   </header>
 
-  <!-- Main Auth Form Slot -->
-  <main layout:fragment="content" class="flex-grow-1 d-flex align-items-center justify-content-center py-5 px-3"></main>
+  <!-- Main Auth Form Slot (Always centered vertically and horizontally) -->
+  <main class="flex-grow-1 d-flex align-items-center justify-content-center py-4 px-3">
+    <div layout:fragment="content" class="w-100 d-flex justify-content-center"></div>
+  </main>
 
   <!-- Global Loading Spinner Overlay -->
   <div th:replace="~{fragments/spinner :: spinner}"></div>

@@ -11,21 +11,21 @@
   <div class="mx-auto" style="max-width: 600px;">
     <div class="p-4 p-md-5 bg-white border border-3 border-dark rounded-4 shadow-sm">
       <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1 class="h4 fw-bold mb-0">Chỉnh Sửa Hồ Sơ</h1>
-        <a th:href="@{/account/profile}" class="btn btn-outline-dark btn-sm fw-bold">Hủy</a>
+        <h1 class="h4 fw-semibold mb-0">Chỉnh Sửa Hồ Sơ</h1>
+        <a th:href="@{/account/profile}" class="btn btn-outline-dark btn-sm fw-semibold">Hủy</a>
       </div>
 
       <form th:action="@{/account/edit-profile}" method="post">
         <div class="mb-3">
-          <label class="form-label fw-bold small">Họ và tên</label>
+          <label class="form-label fw-semibold small">Họ và tên</label>
           <input type="text" name="fullName" class="form-control border-dark" value="Đinh Tuấn Anh" required>
         </div>
         <div class="mb-3">
-          <label class="form-label fw-bold small">Số điện thoại</label>
+          <label class="form-label fw-semibold small">Số điện thoại</label>
           <input type="tel" name="phone" class="form-control border-dark" value="0912 345 678">
         </div>
         <div class="mb-3">
-          <label class="form-label fw-bold small">Trường / Nghề nghiệp</label>
+          <label class="form-label fw-semibold small">Trường / Nghề nghiệp</label>
           <input type="text" name="occupation" class="form-control border-dark" value="Đại học Bách Khoa Hà Nội">
         </div>
         <button type="submit" class="fa-btn fa-btn-yellow w-100 justify-content-center py-2 mt-2">

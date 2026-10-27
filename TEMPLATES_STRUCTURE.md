@@ -1,6 +1,6 @@
-# Cấu Trúc Giao Diện & Thư Mục Templates — TrọAwesome
+# Cấu Trúc Giao Diện & Thư Mục Templates — HoLaHome
 
-Tài liệu này lưu trữ chi tiết cấu trúc thư mục giao diện, quy ước thiết kế và kiến trúc kế thừa layout sử dụng **Thymeleaf Layout Dialect** trong dự án **TrọAwesome**.
+Tài liệu này lưu trữ chi tiết cấu trúc thư mục giao diện, quy ước thiết kế và kiến trúc kế thừa layout sử dụng **Thymeleaf Layout Dialect** trong dự án **HoLaHome**.
 
 ---
 
@@ -41,7 +41,7 @@ src/main/resources/templates/
 │
 ├── home/                                # TRANG CHỦ & GIỚI THIỆU
 │   ├── index.html                       # Trang chủ: Hero banner, tìm kiếm radar, phòng nổi bật
-│   ├── about.html                       # Giới thiệu về nền tảng TrọAwesome
+│   ├── about.html                       # Giới thiệu về nền tảng HoLaHome
 │   └── home.html                        # Giao diện dashboard tổng quan dành cho user đã đăng nhập
 │
 ├── rentals/                             # TÌM KIẾM & XEM PHÒNG TRỌ
@@ -111,7 +111,7 @@ Mọi trang con (`client`, `owner`, `roommates`,...) đều tuân theo chuẩn k
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/main}"> <!-- Hoặc layouts/admin, layouts/auth -->
 <head>
-  <!-- Tiêu đề trang sẽ tự động ghép vào layout theo mẫu: [Tên Trang] — TrọAwesome -->
+  <!-- Tiêu đề trang sẽ tự động ghép vào layout theo mẫu: [Tên Trang] — HoLaHome -->
   <title>Tiêu Đề Trang Con</title>
 
   <!-- (Tùy chọn) Slot CSS riêng của trang nếu có -->

@@ -10,7 +10,7 @@
     <form th:action="@{/rentals}" method="get" class="row g-3 align-items-end">
       <!-- Search Input Keyword -->
       <div class="col-md-4">
-        <label class="form-label fw-bold small text-muted mb-1">
+        <label class="form-label fw-semibold small text-muted mb-1">
           <i class="fa-solid fa-magnifying-glass me-1 text-dark"></i>Từ khóa / Tên trường ĐH
         </label>
         <input type="text" name="keyword" class="form-control border-2 border-dark" placeholder="ĐH Bách Khoa, Cầu Giấy,..." th:value="${param.keyword}">
@@ -18,7 +18,7 @@
 
       <!-- District Select -->
       <div class="col-md-3">
-        <label class="form-label fw-bold small text-muted mb-1">
+        <label class="form-label fw-semibold small text-muted mb-1">
           <i class="fa-solid fa-location-dot me-1 text-danger"></i>Khu vực / Quận
         </label>
         <select name="district" class="form-select border-2 border-dark">
@@ -33,7 +33,7 @@
 
       <!-- Price Range Select -->
       <div class="col-md-3">
-        <label class="form-label fw-bold small text-muted mb-1">
+        <label class="form-label fw-semibold small text-muted mb-1">
           <i class="fa-solid fa-tags me-1 text-success"></i>Khoảng giá
         </label>
         <select name="priceRange" class="form-select border-2 border-dark">

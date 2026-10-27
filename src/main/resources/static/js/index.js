@@ -2,25 +2,24 @@
 const ROOMS_DATA = [
   {
     id: 1,
-    title: "Penthouse Mini Gác Xép Gỗ Thông — Cửa Sổ Kính Tràn Viền",
+    title: "The Sunlight Loft - Ngõ Tự Do",
     campus: "BACHKHOA",
     campusName: "ĐH Bách Khoa",
     distanceKm: 0.4,
     walkMin: 5,
     bikeMin: 2,
-    price: 3.2,
+    price: 3.8,
     priceCategory: "25_40",
     area: 28,
     areaCategory: "MEDIUM",
     matchScore: 99,
-    bentoSpan: "bento-hero",
     accentBg: "#FFF9DB",
-    badgeText: "🔥 CÁCH CỔNG TRƯỜNG 400M",
-    badgeBg: "var(--fa-yellow)",
+    badgeText: "🔥 CÁCH CỔNG TRƯỜNG 350M",
+    badgeBg: "var(--fa-mint)",
     verified: true,
     image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80",
-    amenities: ["no_curfew", "loft", "balcony", "full_furniture", "fingerprint"],
-    amenityLabels: ["Không chung chủ", "Gác xép cao 1m8", "Ban công thoáng", "Khóa vân tay"],
+    amenities: ["no_curfew", "loft", "balcony", "fingerprint"],
+    amenityLabels: ["Không chung chủ", "Khóa vân tay"],
     address: "Ngõ 48 Tạ Quang Bửu, Hai Bà Trưng",
     radarX: 36,
     radarY: 32,
@@ -29,7 +28,7 @@ const ROOMS_DATA = [
   },
   {
     id: 2,
-    title: "Studio Ban Công Cây Xanh — Ngập Nắng Sáng",
+    title: "Skyline Studio Tầng Thượng",
     campus: "BACHKHOA",
     campusName: "ĐH Kinh Tế Quốc Dân",
     distanceKm: 0.9,
@@ -40,14 +39,13 @@ const ROOMS_DATA = [
     area: 34,
     areaCategory: "LARGE",
     matchScore: 97,
-    bentoSpan: "bento-tall",
-    accentBg: "#E6FCF5",
-    badgeText: "🌿 NUÔI THÚ CƯNG OK",
-    badgeBg: "var(--fa-mint)",
+    accentBg: "#F3D9FA",
+    badgeText: "👑 Siêu Phẩm Ban Công",
+    badgeBg: "var(--fa-yellow)",
     verified: true,
-    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80",
-    amenities: ["no_curfew", "balcony", "pet", "full_furniture", "fingerprint"],
-    amenityLabels: ["Nuôi Pet thoải mái", "Ban công 4m²", "Máy giặt riêng", "Giờ tự do"],
+    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=700&q=80",
+    amenities: ["no_curfew", "balcony", "pet", "full_furniture"],
+    amenityLabels: ["Nuôi Pet", "Ban công riêng"],
     address: "Phố Trần Đại Nghĩa (Sát KTX Kinh Tế)",
     radarX: 68,
     radarY: 28,
@@ -56,7 +54,7 @@ const ROOMS_DATA = [
   },
   {
     id: 3,
-    title: "Phòng Đơn Tối Giản Nhật Bản — Giá Sinh Viên",
+    title: "Box Trọ Xanh - Sát Cổng Phụ",
     campus: "CAUGIAY",
     campusName: "ĐH Quốc Gia Cầu Giấy",
     distanceKm: 0.6,
@@ -67,14 +65,13 @@ const ROOMS_DATA = [
     area: 20,
     areaCategory: "SMALL",
     matchScore: 95,
-    bentoSpan: "bento-wide",
-    accentBg: "#F3D9FA",
-    badgeText: "💎 SIÊU TIẾT KIỆM < 2.5TR",
-    badgeBg: "var(--fa-purple)",
+    accentBg: "#E6FCF5",
+    badgeText: "🐷 Tiết Kiệm Nhất",
+    badgeBg: "var(--fa-blue)",
     verified: true,
-    image: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=600&q=80",
     amenities: ["no_curfew", "full_furniture", "fingerprint"],
-    amenityLabels: ["Đủ điều hòa, nóng lạnh", "Giờ tự do", "Khu an ninh cao"],
+    amenityLabels: ["Điều hòa", "Giờ tự do"],
     address: "Ngõ 130 Xuân Thủy, Cầu Giấy",
     radarX: 25,
     radarY: 64,
@@ -83,7 +80,7 @@ const ROOMS_DATA = [
   },
   {
     id: 4,
-    title: "Duplex Gác Lửng Đôi — Cực Hợp Ở Nhóm 2-3 Bạn",
+    title: "Duplex Gác Lửng Đôi Mới Xây",
     campus: "FPT",
     campusName: "ĐH FPT Hòa Lạc",
     distanceKm: 1.4,
@@ -94,14 +91,13 @@ const ROOMS_DATA = [
     area: 32,
     areaCategory: "LARGE",
     matchScore: 94,
-    bentoSpan: "bento-medium",
-    accentBg: "#E7F5FF",
-    badgeText: "✨ MỚI XÂY 100%",
+    accentBg: "#FFF0F6",
+    badgeText: "✨ Mới Xây 100%",
     badgeBg: "var(--fa-blue)",
     verified: true,
     image: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=800&q=80",
     amenities: ["no_curfew", "loft", "balcony", "pet", "full_furniture"],
-    amenityLabels: ["2 Giường tách biệt", "Có gác xép rộng", "Sân để xe miễn phí"],
+    amenityLabels: ["2 Giường riêng", "Gác xép rộng"],
     address: "Khu Tân Xã — Cách cổng ĐH FPT 1.4km",
     radarX: 74,
     radarY: 68,
@@ -110,56 +106,54 @@ const ROOMS_DATA = [
   },
   {
     id: 5,
-    title: "Căn Hộ Mini Gần Cổng Trường — Có Bếp Tách Riêng",
-    campus: "VINH",
-    campusName: "Đại Học Vinh",
-    distanceKm: 0.5,
-    walkMin: 6,
+    title: "Studio Ban Công Thoáng Cầu Giấy",
+    campus: "CAUGIAY",
+    campusName: "ĐH Sư Phạm",
+    distanceKm: 0.8,
+    walkMin: 9,
     bikeMin: 2,
-    price: 2.2,
-    priceCategory: "UNDER_25",
+    price: 3.2,
+    priceCategory: "25_40",
     area: 25,
     areaCategory: "MEDIUM",
-    matchScore: 98,
-    bentoSpan: "bento-wide",
-    accentBg: "#FFE3E3",
-    badgeText: "🔥 SÁT ĐẠI HỌC VINH 500M",
-    badgeBg: "var(--fa-coral)",
+    matchScore: 93,
+    accentBg: "#E7F5FF",
+    badgeText: "☀️ Thoáng Sáng Tự Nhiên",
+    badgeBg: "var(--fa-yellow)",
     verified: true,
-    image: "https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80",
     amenities: ["no_curfew", "balcony", "full_furniture", "fingerprint"],
-    amenityLabels: ["Bếp riêng không ám mùi", "Ban công phơi đồ", "Cổng vân tay"],
-    address: "Đường Bạch Liêu, TP. Vinh, Nghệ An",
+    amenityLabels: ["Ban công riêng", "Bếp khép kín"],
+    address: "Số 18, Ngõ 165 Cầu Giấy, Hà Nội",
     radarX: 48,
     radarY: 22,
-    electricityPrice: "3.2k/số",
-    waterPrice: "50k/người"
+    electricityPrice: "3.5k/số",
+    waterPrice: "30k/khối"
   },
   {
     id: 6,
-    title: "Loft Industrial Cực Nghệ — View Hồ Thoáng Mát",
-    campus: "CAUGIAY",
-    campusName: "ĐH Quốc Gia Cầu Giấy",
-    distanceKm: 1.8,
-    walkMin: 20,
-    bikeMin: 5,
-    price: 4.2,
-    priceCategory: "OVER_40",
-    area: 30,
-    areaCategory: "MEDIUM",
-    matchScore: 92,
-    bentoSpan: "bento-medium",
-    accentBg: "#FFF9DB",
-    badgeText: "📸 GÓC SỐNG ẢO CỰC CHẤT",
-    badgeBg: "var(--fa-yellow)",
+    title: "Phòng Khép Kín Gần KTX Bách Khoa",
+    campus: "BACHKHOA",
+    campusName: "ĐH Bách Khoa",
+    distanceKm: 0.3,
+    walkMin: 4,
+    bikeMin: 1,
+    price: 2.5,
+    priceCategory: "25_40",
+    area: 22,
+    areaCategory: "SMALL",
+    matchScore: 91,
+    accentBg: "#FFF4E6",
+    badgeText: "🛡️ An Ninh Tối Đa",
+    badgeBg: "var(--fa-mint)",
     verified: true,
     image: "https://images.unsplash.com/photo-1536376072261-38c75010e6c9?auto=format&fit=crop&w=800&q=80",
-    amenities: ["no_curfew", "loft", "balcony", "pet", "full_furniture", "fingerprint"],
-    amenityLabels: ["Decor chuẩn Studio", "Nuôi thú cưng", "Thang máy tốc độ cao"],
-    address: "Phố Duy Tân / Dịch Vọng Hậu, Cầu Giấy",
+    amenities: ["no_curfew", "full_furniture", "fingerprint"],
+    amenityLabels: ["Camera 24/7", "Wifi cực mạnh"],
+    address: "Ngõ 30 Tạ Quang Bửu, Bách Khoa",
     radarX: 62,
     radarY: 77,
-    electricityPrice: "3.8k/số",
+    electricityPrice: "3.5k/số",
     waterPrice: "80k/người"
   }
 ];
@@ -175,10 +169,10 @@ function escapeHtml(str) {
     .replace(/'/g, '&#39;');
 }
 
-// Current Filter State
+// Current Filter State (Defaults to ALL & 5.0km to show all 6 rooms on load)
 let currentFilters = {
-  campus: "BACHKHOA",
-  maxDistance: 2.5,
+  campus: "ALL",
+  maxDistance: 5.0,
   price: "ALL",
   area: "ALL",
   amenities: [],
@@ -320,69 +314,26 @@ function renderAllSections() {
 
 let shuffleOffset = 0;
 
-// Render Asymmetric Bento Grid
+// Render 3 Cards per Row Grid
 function renderBentoGrid(rooms) {
   const container = document.getElementById("bentoContainer");
   if (!container) return;
 
-  // Rotate room list based on shuffleOffset so different rooms take the Hero & Spotlight positions
+  // Rotate room list based on shuffleOffset so different rooms take the spotlight
   let displayList = [...rooms];
   if (shuffleOffset > 0 && displayList.length > 1) {
     const shift = shuffleOffset % displayList.length;
     displayList = displayList.slice(shift).concat(displayList.slice(0, shift));
   }
 
-  const roommateCardHtml = `
-    <article class="bento-item bento-col-4" data-category="low" style="background: #FFF0F6;">
-      <span class="fa-sticker sticker-top-right" style="background: var(--fa-yellow);">
-        <i class="fa-solid fa-handshake-angle"></i> Góc Ở Ghép 50/50
-      </span>
-      <div class="p-4 d-flex flex-column justify-content-between h-100">
-        <div>
-          <div class="d-flex align-items-center gap-3 mb-3">
-            <div class="rounded-circle border border-3 border-dark d-flex align-items-center justify-content-center fw-bold fs-4"
-                 style="width: 58px; height: 58px; background: var(--fa-yellow); box-shadow: var(--shadow-sm);">
-              🧑‍💻
-            </div>
-            <div>
-              <h4 class="h5 mb-0">Tìm 1 Bạn Nam Ở Ghép</h4>
-              <span class="badge bg-info text-dark border border-dark">SV Năm 3 - CNTT</span>
-            </div>
-          </div>
-
-          <p class="small fw-semibold mb-3"
-             style="background: var(--fa-white); border: var(--border-medium); padding: 0.75rem; border-radius: var(--radius-sm);">
-            "Phòng 32m² gác xép, full điều hòa, máy giặt, cách cổng trường 600m. Cần tìm bạn ở ghép sạch sẽ, văn minh, chia đôi tiền phòng!"
-          </p>
-
-          <div class="d-flex flex-wrap gap-1 mb-2">
-            <span class="distance-pill"><i class="fa-solid fa-couch"></i> Đủ đồ 100%</span>
-            <span class="distance-pill"><i class="fa-solid fa-wifi"></i> Wifi Mesh</span>
-          </div>
-        </div>
-
-        <div class="d-flex justify-content-between align-items-center pt-2 border-top border-2 border-dark">
-          <div>
-            <span class="small fw-bold d-block text-muted">Chia tiền phòng chỉ:</span>
-            <span class="price-tag-brutal py-1 px-2 fs-6" style="background: var(--fa-coral);">1.65 Triệu/người</span>
-          </div>
-          <button class="fa-btn fa-btn-mint py-2 px-3" onclick="showToast('Đã gửi lời mời kết nối tới Tuấn Anh (SV CNTT)!')">
-            <i class="fa-solid fa-comments"></i> Nhắn làm quen
-          </button>
-        </div>
-      </div>
-    </article>
-  `;
-
-  function renderRoomCard(room, spanClass, imgHeight) {
-    const isHero = spanClass === "bento-hero";
+  function renderRoomCard(room) {
     const isSaved = savedRoomIds.has(room.id);
 
     return `
-      <article class="bento-item ${spanClass}" style="background-color: ${room.accentBg};">
+      <article class="bento-item" style="background-color: ${room.accentBg};">
         <div>
-          <div class="room-img-wrapper" style="height: ${imgHeight};">
-            <img src="${escapeHtml(room.image)}" alt="${escapeHtml(room.title)}" onerror="this.src='https://placehold.co/800x500/183153/FFD43B?text=TroAwesome+360'">
+          <div class="room-img-wrapper" style="height: 200px;">
+            <img src="${escapeHtml(room.image)}" alt="${escapeHtml(room.title)}" onerror="this.src='https://placehold.co/800x500/183153/FFD43B?text=HoLaHome+360'">
             
             <!-- Top Floating Stickers -->
             <div class="position-absolute top-0 start-0 p-3 d-flex flex-wrap gap-2">
@@ -393,17 +344,15 @@ function renderBentoGrid(rooms) {
                 <i class="fa-solid fa-heart-circle-check text-danger"></i> ${room.matchScore}% Hợp Gu
               </span>
             </div>
-
-            <!-- Price Tag Pill -->
-            <div class="position-absolute bottom-0 end-0 m-3">
-              <span class="fa-badge fs-6 px-3 py-2" style="background: var(--fa-yellow); font-size: 1rem !important;">
-                <i class="fa-solid fa-tag"></i> ${room.price} Triệu/tháng
-              </span>
-            </div>
           </div>
 
           <!-- Room Content Body -->
           <div class="p-3 p-lg-4">
+            <h3 class="fs-5 fw-semibold mb-1">${escapeHtml(room.title)}</h3>
+            <p class="small fw-semibold mb-2 text-muted">
+              <i class="fa-solid fa-location-dot text-danger me-1"></i> ${escapeHtml(room.address)}
+            </p>
+
             <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
               <span class="badge rounded-pill border border-2 border-dark text-dark" style="background: var(--fa-white);">
                 <i class="fa-solid fa-graduation-cap text-primary me-1"></i> ${escapeHtml(room.campusName)} (${room.distanceKm} km)
@@ -416,33 +365,32 @@ function renderBentoGrid(rooms) {
               </span>
             </div>
 
-            <h3 class="${isHero ? 'fs-3' : 'fs-5'} fw-bold mb-2">${escapeHtml(room.title)}</h3>
-            <p class="small fw-semibold mb-3 text-muted">
-              <i class="fa-solid fa-location-dot text-danger me-1"></i> ${escapeHtml(room.address)}
-            </p>
-
-            <!-- Amenity Mini Tags -->
+            <!-- Amenity Mini Tags & Electricity/Water Badges -->
             <div class="d-flex flex-wrap gap-1 mb-2">
               ${room.amenityLabels.map(label => `
-                <span class="badge bg-white text-dark border border-2 border-dark fw-bold" style="font-size:0.75rem;">
+                <span class="badge bg-white text-dark border border-2 border-dark fw-semibold" style="font-size:0.75rem;">
                   <i class="fa-solid fa-check text-success me-1"></i>${escapeHtml(label)}
                 </span>
               `).join('')}
+              <span class="badge bg-white text-dark border border-2 border-dark fw-semibold" style="font-size:0.75rem;">
+                <i class="fa-solid fa-bolt text-warning me-1"></i>Điện: ${escapeHtml(room.electricityPrice)}
+              </span>
+              <span class="badge bg-white text-dark border border-2 border-dark fw-semibold" style="font-size:0.75rem;">
+                <i class="fa-solid fa-droplet text-primary me-1"></i>Nước: ${escapeHtml(room.waterPrice)}
+              </span>
             </div>
           </div>
         </div>
 
         <!-- Footer Action Row -->
-        <div class="px-3 px-lg-4 pb-3 pt-2 d-flex justify-content-between align-items-center border-top border-2 border-dark bg-white bg-opacity-75">
-          <div class="small fw-bold">
-            <i class="fa-solid fa-bolt text-warning"></i> Điện: ${escapeHtml(room.electricityPrice)} • Nước: ${escapeHtml(room.waterPrice)}
+        <div class="px-3 px-lg-4 py-2 d-flex justify-content-between align-items-center border-top border-2 border-dark bg-white bg-opacity-75">
+          <div class="d-flex align-items-baseline gap-1">
+            <span class="fs-5 fw-black text-danger bento-price">${room.price} Triệu</span>
+            <span class="text-muted fw-semibold">/tháng</span>
           </div>
           <div class="d-flex gap-2">
             <button class="fa-btn ${isSaved ? 'fa-btn-yellow' : 'fa-btn-white'} py-1 px-2" title="${isSaved ? 'Bỏ lưu' : 'Lưu phòng này'}" onclick="toggleSaveRoom(${room.id})">
               <i class="${isSaved ? 'fa-solid fa-heart text-danger' : 'fa-regular fa-heart'}"></i>
-            </button>
-            <button class="fa-btn fa-btn-yellow py-1 px-3 small" onclick="openQuickPeek(${room.id})">
-              <i class="fa-solid fa-eye"></i> Xem 360°
             </button>
           </div>
         </div>
@@ -450,48 +398,7 @@ function renderBentoGrid(rooms) {
     `;
   }
 
-  let htmlParts = [];
-  const total = displayList.length;
-
-  if (total === 1) {
-    htmlParts.push(renderRoomCard(displayList[0], "bento-col-8", "260px"));
-    htmlParts.push(roommateCardHtml);
-  } else if (total === 2) {
-    htmlParts.push(renderRoomCard(displayList[0], "bento-wide", "240px"));
-    htmlParts.push(renderRoomCard(displayList[1], "bento-medium", "240px"));
-    htmlParts.push(roommateCardHtml.replace("bento-col-4", "bento-full"));
-  } else if (total === 3) {
-    htmlParts.push(renderRoomCard(displayList[0], "bento-hero", "290px"));
-    htmlParts.push(renderRoomCard(displayList[1], "bento-tall", "260px"));
-    htmlParts.push(renderRoomCard(displayList[2], "bento-col-8", "230px"));
-    htmlParts.push(roommateCardHtml);
-  } else if (total === 4) {
-    htmlParts.push(renderRoomCard(displayList[0], "bento-hero", "290px"));
-    htmlParts.push(renderRoomCard(displayList[1], "bento-tall", "260px"));
-    htmlParts.push(renderRoomCard(displayList[2], "bento-col-8", "230px"));
-    htmlParts.push(roommateCardHtml);
-    htmlParts.push(renderRoomCard(displayList[3], "bento-full", "230px"));
-  } else {
-    // 5 or more rooms:
-    // Row 1 & 2: 7 + 5 = 12 columns
-    htmlParts.push(renderRoomCard(displayList[0], "bento-hero", "290px"));
-    htmlParts.push(renderRoomCard(displayList[1], "bento-tall", "260px"));
-    // Row 3: 6 + 6 = 12 columns
-    htmlParts.push(renderRoomCard(displayList[2], "bento-wide", "210px"));
-    htmlParts.push(renderRoomCard(displayList[3], "bento-medium", "210px"));
-    // Row 4: 8 + 4 = 12 columns
-    htmlParts.push(renderRoomCard(displayList[4], "bento-col-8", "220px"));
-    htmlParts.push(roommateCardHtml);
-
-    // Remaining rooms (e.g. room 6 and beyond):
-    for (let i = 5; i < total; i++) {
-      const isLastOdd = (i === total - 1) && ((total - 5) % 2 === 1);
-      const span = isLastOdd ? "bento-full" : ((i % 2 === 1) ? "bento-wide" : "bento-medium");
-      htmlParts.push(renderRoomCard(displayList[i], span, "210px"));
-    }
-  }
-
-  container.innerHTML = htmlParts.join('');
+  container.innerHTML = displayList.map(room => renderRoomCard(room)).join('');
 }
 
 // Switch between Bento and List view safely
@@ -583,7 +490,7 @@ function openQuickPeek(roomId) {
       <div class="row g-4">
         <div class="col-md-6">
           <div class="room-img-wrapper rounded-4" style="height: 280px; border: var(--border-thick);">
-            <img src="${escapeHtml(room.image)}" alt="${escapeHtml(room.title)}" onerror="this.src='https://placehold.co/600x400/183153/FFD43B?text=TroAwesome'">
+            <img src="${escapeHtml(room.image)}" alt="${escapeHtml(room.title)}" onerror="this.src='https://placehold.co/600x400/183153/FFD43B?text=HoLaHome'">
           </div>
         </div>
         <div class="col-md-6 d-flex flex-column justify-content-between">
@@ -592,9 +499,9 @@ function openQuickPeek(roomId) {
               <span class="fa-badge" style="background: var(--fa-yellow);">${room.price} Triệu / tháng</span>
               <span class="fa-badge" style="background: var(--fa-mint);">${room.area}m²</span>
             </div>
-            <p class="fw-bold mb-2"><i class="fa-solid fa-location-dot text-danger me-1"></i> ${escapeHtml(room.address)}</p>
+            <p class="fw-semibold mb-2"><i class="fa-solid fa-location-dot text-danger me-1"></i> ${escapeHtml(room.address)}</p>
             <p class="small fw-semibold bg-light p-3 rounded-3 border border-2 border-dark">
-              Phòng đã được đội ngũ <strong>TrọAwesome</strong> kiểm tra thực tế: Hợp đồng minh bạch, không thu phí dịch vụ trung gian, cam kết đúng hình ảnh 100%.
+              Phòng đã được đội ngũ <strong>HoLaHome</strong> kiểm tra thực tế: Hợp đồng minh bạch, không thu phí dịch vụ trung gian, cam kết đúng hình ảnh 100%.
             </p>
             <div class="mb-3">
               <strong class="d-block mb-2">Tiện ích có sẵn:</strong>
@@ -671,7 +578,7 @@ function showToast(message) {
   icon.className = "fa-solid fa-bell fs-4";
 
   const textDiv = document.createElement("div");
-  textDiv.className = "fw-bold small flex-grow-1";
+  textDiv.className = "fw-semibold small flex-grow-1";
   textDiv.textContent = message; // Safe textContent!
 
   toast.appendChild(icon);

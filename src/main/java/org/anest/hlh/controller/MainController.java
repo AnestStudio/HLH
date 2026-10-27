@@ -11,11 +11,6 @@ public class MainController {
         return "home/index";
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "auth/login";
-    }
-
     @GetMapping("/home")
     public String home() {
         return "home/home";

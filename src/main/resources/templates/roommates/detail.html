@@ -9,7 +9,7 @@
 <body>
 <main layout:fragment="content" class="container py-4">
   <div class="mb-3">
-    <a th:href="@{/roommates}" class="text-decoration-none text-dark fw-bold small">
+    <a th:href="@{/roommates}" class="text-decoration-none text-dark fw-semibold small">
       <i class="fa-solid fa-arrow-left me-1"></i> Quay lại danh sách
     </a>
   </div>
@@ -20,12 +20,12 @@
         <div class="d-flex align-items-center gap-3 pb-3 border-bottom border-2 border-dark mb-3">
           <div class="user-avatar-circle bg-info text-dark" style="width: 64px; height: 64px; font-size: 1.5rem;">H</div>
           <div>
-            <h2 class="h4 fw-bold mb-1">Hoàng Nam (Nam - 2004)</h2>
+            <h2 class="h4 fw-semibold mb-1">Hoàng Nam (Nam - 2004)</h2>
             <span class="text-muted"><i class="fa-solid fa-graduation-cap me-1"></i>Sinh viên ĐH Bách Khoa Hà Nội</span>
           </div>
         </div>
 
-        <h4 class="h5 fw-bold mb-2">Thông tin phòng & Ngân sách</h4>
+        <h4 class="h5 fw-semibold mb-2">Thông tin phòng & Ngân sách</h4>
         <div class="row g-2 p-3 bg-light border border-2 border-dark rounded-3 mb-3 text-center">
           <div class="col-6 border-end border-2 border-dark">
             <span class="text-muted small d-block">Ngân sách chia sẻ</span>
@@ -37,7 +37,7 @@
           </div>
         </div>
 
-        <h4 class="h5 fw-bold mb-2">Thói quen sinh hoạt</h4>
+        <h4 class="h5 fw-semibold mb-2">Thói quen sinh hoạt</h4>
         <div class="d-flex flex-wrap gap-2 mb-4">
           <span class="badge bg-light text-dark border p-2"><i class="fa-solid fa-ban-smoking me-1 text-danger"></i>Không hút thuốc</span>
           <span class="badge bg-light text-dark border p-2"><i class="fa-solid fa-moon me-1 text-primary"></i>Ngủ trước 12h đêm</span>
@@ -45,7 +45,7 @@
           <span class="badge bg-light text-dark border p-2"><i class="fa-solid fa-paw me-1"></i>Không nuôi thú cưng</span>
         </div>
 
-        <h4 class="h5 fw-bold mb-2">Lời nhắn gửi</h4>
+        <h4 class="h5 fw-semibold mb-2">Lời nhắn gửi</h4>
         <p class="text-secondary leading-relaxed mb-0">
           Mình là sinh viên năm 3, tính tình hòa đồng, hay học bài buổi tối nên cần tìm bạn ở chung lịch sự, tôn trọng không gian riêng của nhau. Phòng hiện tại đã có đầy đủ máy giặt, tủ lạnh, bếp nấu.
         </p>
@@ -54,12 +54,12 @@
 
     <div class="col-lg-4">
       <div class="p-4 bg-white border border-3 border-dark rounded-4 shadow-sm position-sticky" style="top: 20px;">
-        <h5 class="fw-bold mb-3">Kết nối với Nam</h5>
+        <h5 class="fw-semibold mb-3">Kết nối với Nam</h5>
         <div class="d-grid gap-2">
           <a th:href="@{/messages/conversation(id=2)}" class="fa-btn fa-btn-yellow justify-content-center py-2">
             <i class="fa-solid fa-comments"></i> Nhắn tin trao đổi
           </a>
-          <button type="button" class="btn btn-outline-dark fw-bold py-2 border-2" data-bs-toggle="modal" data-bs-target="#reportModal">
+          <button type="button" class="btn btn-outline-dark fw-semibold py-2 border-2" data-bs-toggle="modal" data-bs-target="#reportModal">
             <i class="fa-solid fa-flag me-1"></i> Báo cáo tin này
           </button>
         </div>
