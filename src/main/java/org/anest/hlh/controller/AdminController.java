@@ -10,13 +10,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class AdminController {
 
-    @GetMapping
-    public String admin() {  // /admin
+    @GetMapping({"", "/dashboard"})
+    public String admin() {
         return "admin/dashboard";
     }
 
-    @GetMapping("/user")
-    public String userManagement() { // /admin/user
-        return "users/list";
+    @GetMapping({"/user", "/users"})
+    public String userManagement() {
+        return "admin/users";
+    }
+
+    @GetMapping("/settings")
+    public String settings() {
+        return "admin/settings";
+    }
+
+    @GetMapping("/reports")
+    public String reports() {
+        return "admin/reports";
+    }
+
+    @GetMapping({"/user/form", "/user/edit"})
+    public String userForm() {
+        return "users/form";
     }
 }

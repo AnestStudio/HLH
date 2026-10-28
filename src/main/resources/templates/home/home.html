@@ -5,14 +5,16 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/main}">
 <head>
-    <title>Trang Chủ</title>
+    <title>Trang Chủ & Danh Mục UI</title>
     <th:block layout:fragment="page-styles">
         <link rel="stylesheet" th:href="@{/css/home.css}">
     </th:block>
 </head>
 <body>
-<main layout:fragment="content" class="container py-5">
-    <div class="home-welcome-card">
+<main layout:fragment="content" class="container py-4 flex-grow-1">
+
+    <!-- 1. WELCOME CARD -->
+    <div class="home-welcome-card mb-5">
         <div>
             <div class="home-welcome-icon">
                 <i class="fa-solid fa-circle-check"></i>
@@ -20,17 +22,868 @@
         </div>
         <h1 class="home-welcome-title">Đăng nhập thành công!</h1>
         <p class="home-welcome-desc">
-            Chào mừng bạn đã trở lại hệ thống tìm kiếm phòng trọ sinh viên HoLaHome.
+            Chào mừng bạn đã trở lại hệ thống tìm kiếm phòng trọ sinh viên HoLaHome. Dưới đây là danh mục tổng hợp toàn bộ các trang giao diện UI đã được thiết kế trong dự án.
         </p>
         <div class="home-actions-group">
             <a th:href="@{/}" class="fa-btn fa-btn-yellow text-decoration-none">
-                <i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm phòng trọ ngay
+                <i class="fa-solid fa-magnifying-glass"></i> Về Landing Page
+            </a>
+            <a th:href="@{/rentals/list}" class="fa-btn fa-btn-white text-decoration-none">
+                <i class="fa-solid fa-hotel"></i> Xem danh sách phòng
             </a>
             <a th:href="@{/admin}" class="fa-btn fa-btn-navy text-decoration-none" sec:authorize="hasRole('ADMIN')">
                 <i class="fa-solid fa-shield-halved"></i> Quản trị hệ thống
             </a>
         </div>
     </div>
+
+    <!-- 2. UI SHOWCASE CATALOG SECTION -->
+    <section class="catalog-section" id="uiCatalog">
+
+        <!-- Catalog Header Card -->
+        <div class="catalog-header-card">
+            <h2 class="catalog-header-title">
+                <i class="fa-solid fa-cubes-stacked text-warning"></i>
+                Thư Viện Giao Diện — Danh Mục Các Trang HTML
+            </h2>
+            <p class="catalog-header-desc">
+                Tổng hợp <strong>36 trang HTML</strong> thuộc <strong>11 phân hệ chức năng</strong> đã được xây dựng theo phong cách thiết kế Neo-Brutalism. Bạn có thể bấm vào từng nút <strong>"Mở xem"</strong> để xem trực tiếp UI trong tab mới.
+            </p>
+
+            <!-- Stats Bar -->
+            <div class="catalog-stats-bar">
+                <span class="catalog-stat-tag catalog-stat-tag--yellow">
+                    <i class="fa-solid fa-file-code"></i> Tổng cộng: 36 Trang UI
+                </span>
+                <span class="catalog-stat-tag catalog-stat-tag--mint">
+                    <i class="fa-solid fa-layer-group"></i> 11 Phân hệ chức năng
+                </span>
+                <span class="catalog-stat-tag catalog-stat-tag--blue">
+                    <i class="fa-solid fa-palette"></i> Design System: Neo-Brutalism
+                </span>
+                <span class="catalog-stat-tag catalog-stat-tag--coral">
+                    <i class="fa-solid fa-check-double"></i> Đã kích hoạt Controller Mockup
+                </span>
+            </div>
+
+            <!-- Search & Filters -->
+            <div class="catalog-controls">
+                <div class="catalog-search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="catalogSearch" class="catalog-search-input" placeholder="Tìm nhanh theo tên trang, đường dẫn URL hoặc file template..." oninput="filterCatalog()">
+                </div>
+                <div class="catalog-filter-pills" id="filterPills">
+                    <button class="catalog-filter-btn active" onclick="setCategoryFilter('all', this)">Tất cả (36)</button>
+                    <button class="catalog-filter-btn" onclick="setCategoryFilter('home', this)">Trang chủ (3)</button>
+                    <button class="catalog-filter-btn" onclick="setCategoryFilter('auth', this)">Xác thực (3)</button>
+                    <button class="catalog-filter-btn" onclick="setCategoryFilter('rentals', this)">Phòng trọ (3)</button>
+                    <button class="catalog-filter-btn" onclick="setCategoryFilter('roommates', this)">Ở ghép (4)</button>
+                    <button class="catalog-filter-btn" onclick="setCategoryFilter('owner', this)">Chủ trọ (4)</button>
+                    <button class="catalog-filter-btn" onclick="setCategoryFilter('account', this)">Tài khoản (4)</button>
+                    <button class="catalog-filter-btn" onclick="setCategoryFilter('messages', this)">Tin nhắn (2)</button>
+                    <button class="catalog-filter-btn" onclick="setCategoryFilter('reviews', this)">Đánh giá (3)</button>
+                    <button class="catalog-filter-btn" onclick="setCategoryFilter('users', this)">Người dùng (3)</button>
+                    <button class="catalog-filter-btn" onclick="setCategoryFilter('admin', this)">Admin (4)</button>
+                    <button class="catalog-filter-btn" onclick="setCategoryFilter('error', this)">Trang lỗi (3)</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Catalog Grid -->
+        <div class="row g-4" id="catalogGrid">
+
+            <!-- 1. HOME & PUBLIC -->
+            <div class="col-lg-6 catalog-module-col" data-category="home">
+                <div class="catalog-module-card theme-yellow">
+                    <div class="catalog-module-header">
+                        <div class="catalog-module-title-group">
+                            <div class="catalog-module-icon">
+                                <i class="fa-solid fa-house-chimney"></i>
+                            </div>
+                            <h3 class="catalog-module-title">1. Trang Chủ & Giới Thiệu</h3>
+                        </div>
+                        <span class="catalog-module-count">3 trang</span>
+                    </div>
+                    <div class="catalog-items-list">
+                        <div class="catalog-item-row" data-search="trang chu landing page index / templates/home/index.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Trang chủ chính (Landing Page)</span>
+                                    <span class="catalog-item-badge">Bento & Radar</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/</span>
+                                    <span class="catalog-item-path">templates/home/index.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="trang chu dashboard home /home templates/home/home.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Trang chủ thành viên (Dashboard)</span>
+                                    <span class="catalog-item-badge">Đang mở</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/home</span>
+                                    <span class="catalog-item-path">templates/home/home.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/home}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="ve chung toi gioi thieu about /about templates/home/about.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Về chúng tôi (Giới thiệu HoLaHome)</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/about</span>
+                                    <span class="catalog-item-path">templates/home/about.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/about}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. AUTHENTICATION -->
+            <div class="col-lg-6 catalog-module-col" data-category="auth">
+                <div class="catalog-module-card theme-blue">
+                    <div class="catalog-module-header">
+                        <div class="catalog-module-title-group">
+                            <div class="catalog-module-icon">
+                                <i class="fa-solid fa-key"></i>
+                            </div>
+                            <h3 class="catalog-module-title">2. Xác Thực & Đăng Nhập</h3>
+                        </div>
+                        <span class="catalog-module-count">3 trang</span>
+                    </div>
+                    <div class="catalog-items-list">
+                        <div class="catalog-item-row" data-search="dang nhap login /login templates/auth/login.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Đăng nhập hệ thống</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/login</span>
+                                    <span class="catalog-item-path">templates/auth/login.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/login}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="dang ky register /register templates/auth/register.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Đăng ký tài khoản mới</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/register</span>
+                                    <span class="catalog-item-path">templates/auth/register.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/register}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="quen mat khau forgot password /forgot-password templates/auth/forgot-password.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Quên mật khẩu / Khôi phục</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/forgot-password</span>
+                                    <span class="catalog-item-path">templates/auth/forgot-password.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/forgot-password}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. RENTALS & MAP -->
+            <div class="col-lg-6 catalog-module-col" data-category="rentals">
+                <div class="catalog-module-card theme-mint">
+                    <div class="catalog-module-header">
+                        <div class="catalog-module-title-group">
+                            <div class="catalog-module-icon">
+                                <i class="fa-solid fa-building-user"></i>
+                            </div>
+                            <h3 class="catalog-module-title">3. Tìm Kiếm & Phòng Trọ</h3>
+                        </div>
+                        <span class="catalog-module-count">3 trang</span>
+                    </div>
+                    <div class="catalog-items-list">
+                        <div class="catalog-item-row" data-search="danh sach phong tro list rentals /rentals/list templates/rentals/list.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Danh sách phòng trọ</span>
+                                    <span class="catalog-item-badge">Bộ lọc & Grid</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/rentals/list</span>
+                                    <span class="catalog-item-path">templates/rentals/list.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/rentals/list}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="chi tiet phong tro detail rental /rentals/detail templates/rentals/detail.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Chi tiết căn phòng</span>
+                                    <span class="catalog-item-badge">Gallery & Tiện ích</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/rentals/detail</span>
+                                    <span class="catalog-item-path">templates/rentals/detail.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/rentals/detail}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="ban do radar map rentals /rentals/map templates/rentals/map.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Bản đồ Radar định vị quanh trường</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/rentals/map</span>
+                                    <span class="catalog-item-path">templates/rentals/map.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/rentals/map}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. ROOMMATES -->
+            <div class="col-lg-6 catalog-module-col" data-category="roommates">
+                <div class="catalog-module-card theme-purple">
+                    <div class="catalog-module-header">
+                        <div class="catalog-module-title-group">
+                            <div class="catalog-module-icon">
+                                <i class="fa-solid fa-user-group"></i>
+                            </div>
+                            <h3 class="catalog-module-title">4. Tìm Bạn Ở Ghép</h3>
+                        </div>
+                        <span class="catalog-module-count">4 trang</span>
+                    </div>
+                    <div class="catalog-items-list">
+                        <div class="catalog-item-row" data-search="danh sach o ghep roommates list /roommates templates/roommates/list.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Danh sách tìm bạn ở ghép</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/roommates</span>
+                                    <span class="catalog-item-path">templates/roommates/list.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/roommates}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="chi tiet o ghep roommates detail /roommates/detail templates/roommates/detail.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Chi tiết bài đăng ở ghép</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/roommates/detail</span>
+                                    <span class="catalog-item-path">templates/roommates/detail.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/roommates/detail}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="dang tin tim ban o ghep create roommate /roommates/create templates/roommates/create.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Đăng tin tìm bạn ở ghép</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/roommates/create</span>
+                                    <span class="catalog-item-path">templates/roommates/create.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/roommates/create}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="sua tin o ghep edit roommate /roommates/edit templates/roommates/edit.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Chỉnh sửa tin ở ghép</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/roommates/edit</span>
+                                    <span class="catalog-item-path">templates/roommates/edit.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/roommates/edit}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. OWNER / LANDLORD -->
+            <div class="col-lg-6 catalog-module-col" data-category="owner">
+                <div class="catalog-module-card theme-coral">
+                    <div class="catalog-module-header">
+                        <div class="catalog-module-title-group">
+                            <div class="catalog-module-icon">
+                                <i class="fa-solid fa-house-chimney-window"></i>
+                            </div>
+                            <h3 class="catalog-module-title">5. Phân Hệ Chủ Trọ</h3>
+                        </div>
+                        <span class="catalog-module-count">4 trang</span>
+                    </div>
+                    <div class="catalog-items-list">
+                        <div class="catalog-item-row" data-search="dashboard chu tro owner /owner/dashboard templates/owner/dashboard.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Bảng điều khiển chủ trọ</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/owner/dashboard</span>
+                                    <span class="catalog-item-path">templates/owner/dashboard.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/owner/dashboard}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="phong cua toi my rentals owner /owner/my-rentals templates/owner/my-rentals.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Danh sách phòng đang đăng</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/owner/my-rentals</span>
+                                    <span class="catalog-item-path">templates/owner/my-rentals.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/owner/my-rentals}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="dang phong moi create rental owner /owner/create-rental templates/owner/create-rental.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Đăng tin cho thuê mới</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/owner/create-rental</span>
+                                    <span class="catalog-item-path">templates/owner/create-rental.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/owner/create-rental}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="chinh sua phong tro edit rental owner /owner/edit-rental templates/owner/edit-rental.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Chỉnh sửa thông tin phòng</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/owner/edit-rental</span>
+                                    <span class="catalog-item-path">templates/owner/edit-rental.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/owner/edit-rental}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. ACCOUNT -->
+            <div class="col-lg-6 catalog-module-col" data-category="account">
+                <div class="catalog-module-card theme-orange">
+                    <div class="catalog-module-header">
+                        <div class="catalog-module-title-group">
+                            <div class="catalog-module-icon">
+                                <i class="fa-solid fa-id-badge"></i>
+                            </div>
+                            <h3 class="catalog-module-title">6. Tài Khoản Cá Nhân</h3>
+                        </div>
+                        <span class="catalog-module-count">4 trang</span>
+                    </div>
+                    <div class="catalog-items-list">
+                        <div class="catalog-item-row" data-search="ho so ca nhan profile account /account/profile templates/account/profile.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Hồ sơ cá nhân</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/account/profile</span>
+                                    <span class="catalog-item-path">templates/account/profile.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/account/profile}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="chinh sua ho so edit profile account /account/edit-profile templates/account/edit-profile.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Chỉnh sửa thông tin cá nhân</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/account/edit-profile</span>
+                                    <span class="catalog-item-path">templates/account/edit-profile.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/account/edit-profile}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="phong da luu yeu thich favorites account /account/favorites templates/account/favorites.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Danh sách phòng đã lưu</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/account/favorites</span>
+                                    <span class="catalog-item-path">templates/account/favorites.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/account/favorites}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="danh gia cua toi my reviews account /account/my-reviews templates/account/my-reviews.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Các đánh giá của tôi</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/account/my-reviews</span>
+                                    <span class="catalog-item-path">templates/account/my-reviews.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/account/my-reviews}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. MESSAGES -->
+            <div class="col-lg-6 catalog-module-col" data-category="messages">
+                <div class="catalog-module-card theme-blue">
+                    <div class="catalog-module-header">
+                        <div class="catalog-module-title-group">
+                            <div class="catalog-module-icon">
+                                <i class="fa-solid fa-comments"></i>
+                            </div>
+                            <h3 class="catalog-module-title">7. Tin Nhắn & Hội Thoại</h3>
+                        </div>
+                        <span class="catalog-module-count">2 trang</span>
+                    </div>
+                    <div class="catalog-items-list">
+                        <div class="catalog-item-row" data-search="hop thu den tin nhan messages inbox /messages/inbox templates/messages/inbox.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Hộp thư liên hệ (Inbox)</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/messages/inbox</span>
+                                    <span class="catalog-item-path">templates/messages/inbox.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/messages/inbox}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="chi tiet cuoc tro chuyen chat conversation /messages/conversation templates/messages/conversation.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Chi tiết cuộc trò chuyện</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/messages/conversation</span>
+                                    <span class="catalog-item-path">templates/messages/conversation.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/messages/conversation}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. REVIEWS -->
+            <div class="col-lg-6 catalog-module-col" data-category="reviews">
+                <div class="catalog-module-card theme-yellow">
+                    <div class="catalog-module-header">
+                        <div class="catalog-module-title-group">
+                            <div class="catalog-module-icon">
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <h3 class="catalog-module-title">8. Đánh Giá & Nhận Xét</h3>
+                        </div>
+                        <span class="catalog-module-count">3 trang</span>
+                    </div>
+                    <div class="catalog-items-list">
+                        <div class="catalog-item-row" data-search="danh sach danh gia reviews list /reviews/list templates/reviews/list.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Cộng đồng đánh giá nhà trọ</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/reviews/list</span>
+                                    <span class="catalog-item-path">templates/reviews/list.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/reviews/list}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="viet danh gia create review /reviews/create templates/reviews/create.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Viết bài đánh giá mới</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/reviews/create</span>
+                                    <span class="catalog-item-path">templates/reviews/create.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/reviews/create}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="chinh sua danh gia edit review /reviews/edit templates/reviews/edit.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Chỉnh sửa đánh giá</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/reviews/edit</span>
+                                    <span class="catalog-item-path">templates/reviews/edit.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/reviews/edit}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9. USERS -->
+            <div class="col-lg-6 catalog-module-col" data-category="users">
+                <div class="catalog-module-card theme-mint">
+                    <div class="catalog-module-header">
+                        <div class="catalog-module-title-group">
+                            <div class="catalog-module-icon">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <h3 class="catalog-module-title">9. Quản Lý Tài Khoản</h3>
+                        </div>
+                        <span class="catalog-module-count">3 trang</span>
+                    </div>
+                    <div class="catalog-items-list">
+                        <div class="catalog-item-row" data-search="danh sach nguoi dung users list /users/list templates/users/list.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Danh sách tài khoản hệ thống</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/users/list</span>
+                                    <span class="catalog-item-path">templates/users/list.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/users/list}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="chi tiet nguoi dung user detail /users/detail templates/users/detail.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Chi tiết thông tin người dùng</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/users/detail</span>
+                                    <span class="catalog-item-path">templates/users/detail.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/users/detail}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="bieu mau nguoi dung user form /users/form templates/users/form.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Biểu mẫu thêm / chỉnh sửa user</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/users/form</span>
+                                    <span class="catalog-item-path">templates/users/form.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/users/form}" target="_blank" class="catalog-item-link" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10. ADMIN -->
+            <div class="col-lg-6 catalog-module-col" data-category="admin">
+                <div class="catalog-module-card theme-navy">
+                    <div class="catalog-module-header">
+                        <div class="catalog-module-title-group">
+                            <div class="catalog-module-icon">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <h3 class="catalog-module-title">10. Quản Trị Hệ Thống (Admin)</h3>
+                        </div>
+                        <span class="catalog-module-count">4 trang</span>
+                    </div>
+                    <div class="catalog-items-list">
+                        <div class="catalog-item-row" data-search="dashboard admin quan tri vien /admin /preview/admin/dashboard templates/admin/dashboard.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Bảng điều khiển Quản trị viên</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/preview/admin/dashboard</span>
+                                    <span class="catalog-item-path">templates/admin/dashboard.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/preview/admin/dashboard}" target="_blank" class="catalog-item-link catalog-item-link--admin" title="Mở xem UI trực tiếp (không yêu cầu quyền Admin)">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="quan tri tai khoan admin users /admin/users /preview/admin/users templates/admin/users.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Quản trị tài khoản & phân quyền</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/preview/admin/users</span>
+                                    <span class="catalog-item-path">templates/admin/users.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/preview/admin/users}" target="_blank" class="catalog-item-link catalog-item-link--admin" title="Mở xem UI trực tiếp">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="cai dat he thong admin settings /admin/settings /preview/admin/settings templates/admin/settings.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Cài đặt & cấu hình hệ thống</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/preview/admin/settings</span>
+                                    <span class="catalog-item-path">templates/admin/settings.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/preview/admin/settings}" target="_blank" class="catalog-item-link catalog-item-link--admin" title="Mở xem UI trực tiếp">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="bao cao vi pham admin reports /admin/reports /preview/admin/reports templates/admin/reports.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Xử lý báo cáo vi phạm</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/preview/admin/reports</span>
+                                    <span class="catalog-item-path">templates/admin/reports.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/preview/admin/reports}" target="_blank" class="catalog-item-link catalog-item-link--admin" title="Mở xem UI trực tiếp">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 11. ERROR PAGES -->
+            <div class="col-lg-6 catalog-module-col" data-category="error">
+                <div class="catalog-module-card theme-gray">
+                    <div class="catalog-module-header">
+                        <div class="catalog-module-title-group">
+                            <div class="catalog-module-icon">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+                            <h3 class="catalog-module-title">11. Trang Thông Báo Lỗi</h3>
+                        </div>
+                        <span class="catalog-module-count">3 trang</span>
+                    </div>
+                    <div class="catalog-items-list">
+                        <div class="catalog-item-row" data-search="loi 403 cam truy cap forbidden /error/403 templates/error/403.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Lỗi 403 — Từ chối truy cập (Forbidden)</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/error/403</span>
+                                    <span class="catalog-item-path">templates/error/403.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/error/403}" target="_blank" class="catalog-item-link catalog-item-link--danger" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="loi 404 khong tim thay not found /error/404 templates/error/404.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Lỗi 404 — Không tìm thấy trang (Not Found)</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/error/404</span>
+                                    <span class="catalog-item-path">templates/error/404.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/error/404}" target="_blank" class="catalog-item-link catalog-item-link--danger" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <div class="catalog-item-row" data-search="loi 500 loi may chu internal server error /error/500 templates/error/500.html">
+                            <div class="catalog-item-content">
+                                <div class="catalog-item-name">
+                                    <span>Lỗi 500 — Lỗi máy chủ (Server Error)</span>
+                                </div>
+                                <div class="catalog-item-meta">
+                                    <span class="catalog-item-route">/error/500</span>
+                                    <span class="catalog-item-path">templates/error/500.html</span>
+                                </div>
+                            </div>
+                            <a th:href="@{/error/500}" target="_blank" class="catalog-item-link catalog-item-link--danger" title="Mở trang trong tab mới">
+                                Mở xem <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- No results message -->
+        <div id="noResultsMsg" class="catalog-empty-search d-none mt-4">
+            <i class="fa-solid fa-magnifying-glass fs-1 text-muted mb-3 d-block"></i>
+            <h5 class="fw-bold">Không tìm thấy trang phù hợp</h5>
+            <p class="text-muted small mb-0">Thử tìm kiếm với từ khóa khác như "phòng", "bản đồ", "tin nhắn", "admin"...</p>
+        </div>
+
+    </section>
+
 </main>
+
+<th:block layout:fragment="page-scripts">
+<script>
+    let currentCategory = 'all';
+
+    function setCategoryFilter(category, btnElement) {
+        currentCategory = category;
+        document.querySelectorAll('#filterPills .catalog-filter-btn').forEach(b => b.classList.remove('active'));
+        if (btnElement) btnElement.classList.add('active');
+        filterCatalog();
+    }
+
+    function removeDiacritics(str) {
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    }
+
+    function filterCatalog() {
+        const query = removeDiacritics(document.getElementById('catalogSearch').value.trim());
+        const moduleCols = document.querySelectorAll('.catalog-module-col');
+        let totalVisibleRows = 0;
+
+        moduleCols.forEach(col => {
+            const cat = col.getAttribute('data-category');
+            const matchCategory = (currentCategory === 'all' || currentCategory === cat);
+
+            if (!matchCategory) {
+                col.classList.add('d-none');
+                return;
+            }
+
+            const rows = col.querySelectorAll('.catalog-item-row');
+            let visibleInCard = 0;
+
+            rows.forEach(row => {
+                const searchData = removeDiacritics(row.getAttribute('data-search') || '') + ' ' + removeDiacritics(row.innerText || '');
+                if (!query || searchData.includes(query)) {
+                    row.classList.remove('d-none');
+                    visibleInCard++;
+                } else {
+                    row.classList.add('d-none');
+                }
+            });
+
+            if (visibleInCard > 0) {
+                col.classList.remove('d-none');
+                totalVisibleRows += visibleInCard;
+            } else {
+                col.classList.add('d-none');
+            }
+        });
+
+        const noResults = document.getElementById('noResultsMsg');
+        if (totalVisibleRows === 0) {
+            noResults.classList.remove('d-none');
+        } else {
+            noResults.classList.add('d-none');
+        }
+    }
+</script>
+</th:block>
+
 </body>
 </html>

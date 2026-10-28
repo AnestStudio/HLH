@@ -10,6 +10,20 @@ body {
   background-image: radial-gradient(#18315318 1.5px, transparent 1.5px);
   background-size: 28px 28px;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Sticky Footer: đảm bảo footer luôn nằm ở đáy trang khi nội dung ngắn */
+main,
+body > main {
+  flex-grow: 1;
+}
+
+footer,
+body > footer {
+  margin-top: auto !important;
 }
 
 h1, h2, h3, h4, h5, h6, .font-heading, .heading-font {
